@@ -17,4 +17,13 @@ class Barang extends Model
         'stok',
         'gambar'
     ];
+
+    public function kategori(){
+        return $this->belongToMany('App\Kategori');
+    }
+
+    public function pesanan_detail()
+    {
+        return $this->hasMany('App\PesananDetail', 'barang_id', 'id');
+    }
 }

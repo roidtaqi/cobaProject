@@ -54,7 +54,7 @@
   <div class="col-sm-2">
                     <div class="form-check">
                             <label class="form-check-label" >Ruang Makan
-                              <input class="form-check-input" name="kategori" id="kategori" type="checkbox" value="rmakan">
+                              <input class="form-check-input" name="kategori" id="kategori" type="checkbox" value="ruang makan">
                               <span class="form-check-sign">
                                 <span class=""></span>
                               </span>
@@ -64,7 +64,7 @@
                           <div class="col-sm-2">
                           <div class="form-check">
                             <label class="form-check-label" >Ruang Tamu
-                              <input class="form-check-input" name="kategori" id="kategori" type="checkbox" value="rtamu">
+                              <input class="form-check-input" name="kategori" id="kategori" type="checkbox" value="ruang tamu">
                               <span class="form-check-sign">
                                 <span class=""></span>
                               </span>
@@ -74,7 +74,7 @@
                           <div class="col-sm-2">
                           <div class="form-check">
                             <label class="form-check-label" >Ruang Kerja
-                              <input class="form-check-input" name="kategori" id="kategori" type="checkbox" value="rkerja">
+                              <input class="form-check-input" name="kategori" id="kategori" type="checkbox" value="ruang kerja">
                               <span class="form-check-sign">
                                 <span class=""></span>
                               </span>
@@ -84,7 +84,7 @@
                           <div class="col-sm-2">
                           <div class="form-check">
                             <label class="form-check-label" >Kamar Tidur
-                              <input class="form-check-input" name="kategori" id="kategori" type="checkbox" value="rkerja">
+                              <input class="form-check-input" name="kategori" id="kategori" type="checkbox" value="kamar tidur">
                               <span class="form-check-sign">
                                 <span class=""></span>
                               </span>
@@ -94,7 +94,7 @@
                           <div class="col-sm-2">
                           <div class="form-check">
                             <label class="form-check-label" >Dekorasi
-                              <input class="form-check-input" name="kategori" id="kategori" type="checkbox" value="rkerja">
+                              <input class="form-check-input" name="kategori" id="kategori" type="checkbox" value="dekorasi">
                               <span class="form-check-sign">
                                 <span class=""></span>
                               </span>
@@ -103,7 +103,14 @@
                           </div>
                           </div>
                           <br>
-                      <button type="submit" class="btn btn-fill btn-primary">Update</button>
+                      <div class="row">
+                    <div class="col-2">
+                    <button type="submit" class="btn btn-fill btn-primary">Update</button>
+                    </div>
+                    <div class="col-2">
+                        <button href="/barang" class="btn btn-fill btn-danger">Batal</button>
+                    </div>
+                </div>
                 </form>
               </div>
             </div>

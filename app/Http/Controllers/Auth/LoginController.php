@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use SweetAlert;
 
 class LoginController extends Controller
 {
@@ -41,12 +42,15 @@ class LoginController extends Controller
 
     public function redirectTo()
     {
+        $user = Auth::user();
         if(Auth::user()->hasRole('admin')){
             $this->redirectTo = route('dashboard');
+            alert()->success('','Selamat Datang, '.$user->name. ' !');
             return $this->redirectTo;
         }
 
         $this->redirectTo = route('home');
+        alert()->success('','Selamat Datang, '.$user->name. ' !');
         return $this->redirectTo;
     }
 }

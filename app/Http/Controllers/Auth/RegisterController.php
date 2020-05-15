@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use App\Role;
+use SweetAlert;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -67,6 +68,8 @@ class RegisterController extends Controller
     {
         $user = User::create([
             'name' => $data['name'],
+            'alamat' => $data['alamat'],
+            'no_hp' => $data['no_hp'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
@@ -75,6 +78,8 @@ class RegisterController extends Controller
 
         $user->roles()->attach($role);
 
+        alert()->success('','Selamat Datang, ' .$user->name. ' !');
         return $user;
+        return redirect('home');
     }
 }

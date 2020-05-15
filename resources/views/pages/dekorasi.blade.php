@@ -38,18 +38,16 @@
                             </div>
                             <div class="widgets_inner">
                                 <ul class="list">
-                                    <li>
-                                        <a href="#">Lampu</a>
-                                        <span>(250)</span>
-                                    </li>
-                                    <li>
-                                        <a href="#">Karpet</a>
-                                        <span>(250)</span>
-                                    </li>
-                                    <li>
-                                        <a href="#">Hiasan</a>
-                                        <span>(250)</span>
-                                    </li>
+                                @if(!empty($kategori))
+                                            <?php foreach ($kategori as $kat): ?>
+                                                <li>
+                                                    <a href="{{ $kat->slug }}">{{ $kat->name }}</a>
+                                                    <span>(250)</span>
+                                                </li>
+                                            <?php endforeach ?>
+                                        @else
+                                      <p>Tidak ada data Barang</p>
+                                    @endif
                                     <li>
                                     <!--     <a href="#">Lainnya</a>
                                         <span>(250)</span>
@@ -200,36 +198,23 @@
                     </div>
 
                     <div class="row align-items-center latest_product_inner">
-                        <div class="col-lg-4 col-sm-6">
+                        @if(!empty($barang))
+                          <?php foreach ($barang as $ba): ?>
+                            <div class="col-lg-4 col-sm-6">
                             <div class="single_product_item">
-                                <img src="img/product/lampu.jpg" alt="">
+                                <img src="{{ url('uploads') }}/{{ $ba->gambar }}">
                                 <div class="single_product_text">
-                                    <h4>Lampu Gantung</h4>
-                                    <h3>IDR 150.000</h3>
-                                    <a href="#" class="add_cart">+ tambah ke keranjang<i class="ti-heart"></i></a>
+                                    <h4>{{ $ba->namabarang }}</h4>
+                                    <h3>{{ $ba->harga }}</h3>
+                                    <a href="{{ url('detail') }}/{{ $ba->namabarang }}" class="add_cart">+ tambah ke keranjang<i class="ti-heart"></i></a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="single_product_item">
-                                <img src="img/product/karpet.jpg" alt="">
-                                <div class="single_product_text">
-                                    <h4>Karpet</h4>
-                                    <h3>IDR 100.000</h3>
-                                    <a href="#" class="add_cart">+ tambah ke keranjang<i class="ti-heart"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="single_product_item">
-                                <img src="img/product/dekor-1.jpg" alt="">
-                                <div class="single_product_text">
-                                    <h4>Hiasan</h4>
-                                    <h3>IDR 100.000</h3>
-                                    <a href="#" class="add_cart">+ tambah ke keranjang<i class="ti-heart"></i></a>
-                                </div>
-                            </div>
-                        </div>
+                    <?php endforeach ?>
+                @else
+            <p>Tidak ada data Barang</p>
+        @endif
+    </div>
                         <!-- <div class="col-lg-4 col-sm-6">
                             <div class="single_product_item">
                                 <img src="img/product/product_4.png" alt="">

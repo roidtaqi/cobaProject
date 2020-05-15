@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 use App\Barang;
+use App\Kategori;
 
 use Illuminate\Http\Request;
 
 class DetailController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
     
     /**
      * Display a listing of the resource.
@@ -20,8 +21,9 @@ class DetailController extends Controller
     public function index($namabarang)
     {
         $barang = Barang::where('namabarang',$namabarang)->first();
+        $kategori = Kategori::all();
 
-        return view('detail.index');
+        return view('detail.index', compact('barang','kategori'));
     }
 
     /**

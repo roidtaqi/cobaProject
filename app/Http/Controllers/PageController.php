@@ -36,4 +36,22 @@ class PageController extends Controller
     {
         return view('pages.users', ['users' => $model->paginate(15)]);
     }
+
+    public function dashboard()
+    {
+        $lihat = User::all();
+        $lihat = 'user';
+        $lihat_list = User::orderBy('id', 'asc')->paginate('15');
+        return view('pages.dashboard');
+    }
+
+    public function padmin()
+    {
+        return view('pages.pembayaran-admin');
+    }
+
+    public function pengiriman()
+    {
+        return view('pages.pengiriman');
+    }
 }

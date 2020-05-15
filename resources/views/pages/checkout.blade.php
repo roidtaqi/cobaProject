@@ -24,16 +24,12 @@
   <!-- breadcrumb start-->
 
   <!--================Checkout Area =================-->
-  <section class="checkout_area padding_top">
+  <section class="checkout_area pt-3 pb-3">
     <div class="container">
       <div class="returning_customer">
-        <div class="check_title">
-          <h2>
-            Pernah Berbelanja Disini?
-            <a href="login">Klik Disini Untuk Login</a>
-          </h2>
-        </div>
-        <br>
+         <a class="btn_1 mb-2" href="{{ url('cart') }}"><i class="fas fa-arrow-left"> </i> Kembali Ke Keranjang</a>
+         <br>
+         <br>
       <!--   <p>
           If you have shopped with us before, please enter your details in the
           boxes below. If you are a new customer, please proceed to the
@@ -72,147 +68,94 @@
       </div> -->
       <div class="billing_details">
         <div class="row">
-          <div class="col-lg-8">
-            <h3>Data Penagihan</h3>
-            <form class="row contact_form" action="#" method="post" novalidate="novalidate">
-              <div class="col-md-6 form-group p_star">
-                <input type="text" class="form-control" id="first" name="name" />
-                <span class="placeholder" data-placeholder="First name"></span>
-              </div>
-              <div class="col-md-6 form-group p_star">
-                <input type="text" class="form-control" id="last" name="name" />
-                <span class="placeholder" data-placeholder="Last name"></span>
-              </div>
-             <!--  <div class="col-md-12 form-group">
-                <input type="text" class="form-control" id="company" name="company" placeholder="Company name" />
-              </div> -->
-              <div class="col-md-6 form-group p_star">
-                <input type="text" class="form-control" id="number" name="number" />
-                <span class="placeholder" data-placeholder="Nomor Telepon"></span>
-              </div>
-              <div class="col-md-6 form-group p_star">
-                <input type="text" class="form-control" id="email" name="compemailany" />
-                <span class="placeholder" data-placeholder="Alamat E-mail"></span>
-              </div>
-              <div class="col-md-12 form-group p_star">
-                <select class="country_select">
-                  <option value="1">Country</option>
-                  <option value="2">Country</option>
-                  <option value="4">Country</option>
-                </select>
-              </div>
-              <div class="col-md-12 form-group p_star">
-                <input type="text" class="form-control" id="add1" name="add1" />
-                <span class="placeholder" data-placeholder="Alamat Rumah"></span>
-              </div>
-              <!-- <div class="col-md-12 form-group p_star">
-                <input type="text" class="form-control" id="add2" name="add2" />
-                <span class="placeholder" data-placeholder="Address line 02"></span>
-              </div> -->
-              <div class="col-md-12 form-group p_star">
-                <input type="text" class="form-control" id="province" name="province" />
-                <span class="placeholder" data-placeholder="Provinsi"></span>
-              </div>
-              <div class="col-md-12 form-group p_star">
-                <input type="text" class="form-control" id="city" name="city" />
-                <span class="placeholder" data-placeholder="Kota"></span>
-              </div>
-              <div class="col-md-12 form-group">
-                <input type="text" class="form-control" id="zip" name="zip" placeholder="Postcode/ZIP" />
-              </div>
-             <!--  <div class="col-md-12 form-group">
-                <div class="creat_account">
-                  <input type="checkbox" id="f-option2" name="selector" />
-                  <label for="f-option2">Create an account?</label>
-                </div>
-              </div> -->
-              <br>
-              
-              <div class="col-md-12 form-group">
-                <div class="creat_account">
-                  <h3>Detil Pengiriman</h3>
-                  <input type="checkbox" id="f-option3" name="selector" />
-                  <label for="f-option3">Kirim Sebagai Dropshipper</label>
-                </div>
-                <textarea class="form-control" name="message" id="message" rows="1"
-                  placeholder="Catatan Penjual"></textarea>
-              </div>
-            </form>
+          <div class="col-lg-6">
+            <h2 align="center">Data Penagihan</h2>
+            <hr>
+            <br>
+             <table class="table table-striped mt-3">
+                        <tbody>
+                        <tr>
+                            <td>Nama</td>
+                            <td width="5">:</td>
+                            <td>{{ old('name', auth()->user()->name) }}</td>
+                        </tr>    
+                        <tr>
+                            <td>Email</td>
+                            <td width="5">:</td>
+                            <td>{{ old('email', auth()->user()->email) }}</td>
+                        </tr>
+                        <tr>
+                            <td>No. Handphone</td>
+                            <td width="5">:</td>
+                            <td>{{ old('no_hp', auth()->user()->no_hp) }}</td>
+                        </tr>
+                        <tr>
+                            <td>Alamat</td>
+                            <td width="5">:</td>
+                            <td>{{ old('alamat', auth()->user()->alamat) }}</td>
+                        </tr>    
+
+                        </tbody>
+                    </table>
           </div>
-          <div class="col-lg-4">
+
+          <div class="col-lg-6">
             <div class="order_box">
-              <h2>Pesanan Anda</h2>
-              <ul class="list">
-                <li>
-                  <a href="#">Produk
-                    <span>Total</span>
-                  </a>
-                </li>
-                <!-- <li>
-                  <a href="#">Fresh Blackberry
-                    <span class="middle">x 02</span>
-                    <span class="last">$720.00</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">Fresh Tomatoes
-                    <span class="middle">x 02</span>
-                    <span class="last">$720.00</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">Fresh Brocoli
-                    <span class="middle">x 02</span>
-                    <span class="last">$720.00</span>
-                  </a>
-                </li> -->
-              </ul>
-              <ul class="list list_2">
-                <li>
-                  <a href="#">Subtotal
-                    <span>IDR 0</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">Pengiriman
-                    <span>IDR 0</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">Total
-                    <span>IDR 0</span>
-                  </a>
-                </li>
-              </ul>
-              <div class="payment_item">
-                <div class="radion_btn">
-                  <input type="radio" id="f-option5" name="selector" />
-                  <label for="f-option5">Cash On Delivery</label>
-                  <div class="check"></div>
-                </div>
-                <p>
-                  Please send a check to Store Name, Store Street, Store Town,
-                  Store State / County, Store Postcode.
-                </p>
-              </div>
-              <div class="payment_item active">
-                <div class="radion_btn">
-                  <input type="radio" id="f-option6" name="selector" />
-                  <label for="f-option6">Paypal </label>
-                  <img src="img/product/single-product/card.jpg" alt="" />
-                  <div class="check"></div>
-                </div>
-                <p>
-                  Please send a check to Store Name, Store Street, Store Town,
-                  Store State / County, Store Postcode.
-                </p>
-              </div>
+              <h2 align="center">Pesanan Anda</h2>
+              <table class="table table-bordered">
+                <thead>
+                  <tr align="center">
+                    <th>Produk</th>
+                    <th colspan="1"></th>
+                    <th>Harga</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach($pesanan_details as $pd)
+                  <tr>
+                    <td align="center"><strong>{{ $pd->barang->namabarang }}</strong></td>
+                    <td align="center"><strong> x {{ $pd->jumlah }}</strong></td>
+                    <td align="center"><strong>Rp. {{ number_format ($pd->barang->harga) }}</strong></td>
+                  </tr>
+                </tbody>
+                  @endforeach
+
+              <table class="table table-bordered">
+                  <tbody>
+                    <tr>
+                     <td>
+                      <h5>Subtotal</h5>
+                    </td>
+
+                     <td align="center"> : </td>
+                     <td align="center"><strong>Rp. {{ number_format ($pd->pesanan->jumlah_harga) }}</strong></td>
+                  </tr>
+                  <tr>
+                   <td>
+                      <h5>Transfer</h5>
+                    </td>
+
+                     <td align="center"> : </td>
+                     <td align="center"><strong>Rp. {{ number_format ($pd->pesanan->kode) }}</strong></td>
+                  </tr>
+                  <tr>
+                   <td>
+                      <h5>Total</h5>
+                    </td>
+
+                     <td align="center"> : </td>
+                     <td align="center"><strong>Rp. {{ number_format ($pd->pesanan->jumlah_harga+$pd->pesanan->kode) }}</strong></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </table>
+              
               <div class="creat_account">
-                <input type="checkbox" id="f-option4" name="selector" />
+                <input type="checkbox" id="f-option4" name="selector" required/>
                 <label for="f-option4">Saya telah membaca dan menyetujui </label>
                 <a href="#">Syarat dan Ketentuan</a>
               </div>
-              <a class="btn_3" href="#">Proses Checkout</a>
+              <a class="btn_3" href="#">Checkout</a>
             </div>
           </div>
         </div>

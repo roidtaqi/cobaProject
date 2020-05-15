@@ -100,7 +100,7 @@
                         <!-- <p>Premium Quality</p> -->
                         <h3>Ruang Makan</h3>
                          <img src="img/category/dining-icon.png">
-                        <a href="ruang-makan" class="feature_btn">Eksplor<i class="fas fa-play"></i></a>
+                        <a href="ruang-makan" class="feature_btn">Jelajah<i class="fas fa-play"></i></a>
                        <!--  <img src="img/feature/feature_1.png" alt=""> -->
                     </div>
                 </div>
@@ -109,7 +109,7 @@
                         <!-- <p>Premium Quality</p> -->
                         <h3>Kamar Tidur</h3>
                         <img src="img/category/bedroom-icon.jpg">
-                        <a href="kamar-tidur" class="feature_btn">Eksplor <i class="fas fa-play"></i></a>
+                        <a href="kamar-tidur" class="feature_btn">Jelajah <i class="fas fa-play"></i></a>
                         <!-- <img src="img/feature/feature_2.png" alt=""> -->
                     </div>
                 </div>
@@ -118,7 +118,7 @@
                        <!--  <p>Premium Quality</p> -->
                         <h3>Ruang Tamu</h3>
                         <img src="img/category/living-icon.png">
-                        <a href="ruang-tamu" class="feature_btn">Eksplor <i class="fas fa-play"></i></a>
+                        <a href="ruang-tamu" class="feature_btn">Jelajah <i class="fas fa-play"></i></a>
                        <!--  <img src="img/feature/feature_3.png" alt=""> -->
                     </div>
                 </div>
@@ -127,7 +127,7 @@
                        <!--  <p>Premium Quality</p> -->
                         <h3>Ruang Kerja</h3>
                          <img src="img/category/workspace-icon.png">
-                        <a href="ruang-kerja" class="feature_btn">Eksplor <i class="fas fa-play"></i></a>
+                        <a href="ruang-kerja" class="feature_btn">Jelajah <i class="fas fa-play"></i></a>
                        <!--  <img src="img/feature/feature_4.png" alt=""> -->
                     </div>
                 </div>
@@ -136,7 +136,7 @@
                        <!--  <p>Premium Quality</p> -->
                         <h3>Dekorasi</h3>
                          <img src="img/category/decor-icon.png">
-                        <a href="dekorasi" class="feature_btn">Eksplor<i class="fas fa-play"></i></a>
+                        <a href="dekorasi" class="feature_btn">Jelajah<i class="fas fa-play"></i></a>
                        <!--  <img src="img/feature/feature_4.png" alt=""> -->
                     </div>
                 </div>
@@ -151,27 +151,34 @@
             <div class="row justify-content-center">
                 <div class="col-lg-12">
                     <div class="section_tittle text-center">
-                        <h2>Produk Terlaris</h2>
+                        <h2>Produk Rekomendasi</h2>
                     </div>
                 </div>
             </div>
             <div class="row align-items-center justify-content-between">
-                <div class="col-lg-12">
-                    <div class="best_product_slider owl-carousel">
+            <div class="col-lg-12">
+            <div class="best_product_slider owl-carousel">
                     @if(!empty($barang))
 				    <?php foreach ($barang as $ba): ?>
+
                         <div class="single_product_item">
                         <img src="{{ url('uploads') }}/{{ $ba->gambar }}"/>
                                 <div class="single_product_text">
                                     <h4>{{ $ba->namabarang }}</h4>
-                                    <h3>{{ $ba->harga }}</h3>
-                                    <a href="{{ url('detail') }}/{{ $ba->namabarang }}" class="add_cart">+ Tambah Ke Keranjang</a>
+                                    <h3>Rp. {{ number_format($ba->harga) }}</h3>
+                                    <a href="{{ url('detail') }}/{{ $ba->namabarang }}" class="add_cart">Lihat Detail</a>
                             </div>
-                        </div>
+                    </div>
                         <?php endforeach ?>
 		            @else
 			        <p>Tidak ada data Barang</p>
-	                @endif
+                    @endif
+                    </div>
+                    </div>
+                    </div>
+                    <br>
+                    <div style="padding-left: 450px">
+                        <a href="/semua" class="btn btn-outline-danger center" role="button">Lihat Barang Selengkapnya</a>
                     </div>
                 </div>
             </div>
@@ -214,7 +221,7 @@
     <!-- awesome_shop part start-->
 
     <!-- product_list part start-->
-    <section class="product_list best_seller section_padding">
+<!--     <section class="product_list best_seller section_padding">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-12">
@@ -226,50 +233,24 @@
             <div class="row align-items-center justify-content-between">
                 <div class="col-lg-12">
                     <div class="best_product_slider owl-carousel">
+                    @if(!empty($barang))
+				    <?php foreach ($barang as $ba): ?>
                         <div class="single_product_item">
-                            <img src="img/product/kursi-kerja.jpg" alt="">
+                        <img src="{{ url('uploads') }}/{{ $ba->gambar }}"/>
                                 <div class="single_product_text">
-                                    <h4>Kursi Kerja</h4>
-                                    <h3>IDR 300.000</h3>
-                                    <a href="#" class="add_cart">+ Tambah Ke Keranjang</i></a>
+                                    <h4>{{ $ba->namabarang }}</h4>
+                                    <h3>Rp. {{ number_format($ba->harga) }}</h3>
+                                    <a href="{{ url('detail') }}/{{ $ba->namabarang }}" class="add_cart">Lihat Detail</a>
                             </div>
                         </div>
-                        <div class="single_product_item">
-                            <img src="img/product/meja-kerja.jpg" alt="">
-                                <div class="single_product_text">
-                                    <h4>Meja Kerja</h4>
-                                    <h3>IDR 500.000</h3>
-                                    <a href="#" class="add_cart">+ Tambah Ke Keranjang</i></a>
-                            </div>
-                        </div>
-                        <div class="single_product_item">
-                             <img src="img/product/penyimpanan.jpg" alt="">
-                                <div class="single_product_text">
-                                    <h4>Kabinet</h4>
-                                    <h3>IDR 350.000</h3>
-                                    <a href="#" class="add_cart">+ Tambah Ke Keranjang</a>
-                            </div>
-                        </div>
-                        <div class="single_product_item">
-                           <img src="img/product/lampu.jpg" alt="">
-                                <div class="single_product_text">
-                                    <h4>Lampu Gantung</h4>
-                                    <h3>IDR 150.000</h3>
-                                    <a href="#" class="add_cart">+ Tambah Ke Keranjang</a>
-                            </div>
-                        </div>
-                        <div class="single_product_item">
-                            <img src="img/product/meja-makan.jpg" alt="">
-                                <div class="single_product_text">
-                                    <h4>Meja Makan</h4>
-                                    <h3>IDR 500.000</h3>
-                                    <a href="#" class="add_cart">+ Tambah Ke Keranjang</a>
-                            </div>
-                        </div>
+                        <?php endforeach ?>
+		            @else
+			        <p>Tidak ada data Barang</p>
+	                @endif
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </section>
     <!-- product_list part end-->
 

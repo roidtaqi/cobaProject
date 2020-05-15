@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="css/slick.css">
     <!-- style CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -58,5 +59,6 @@
     <script src="js/mail-script.js"></script>
     <!-- custom js -->
     <script src="js/custom.js"></script>
+    @include('sweet::alert')
 </body>
 </html>

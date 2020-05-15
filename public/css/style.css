@@ -105,7 +105,7 @@ input:focus {
 
 /* line 64, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_common.scss */
 .padding_top {
-  padding-top: 140px;
+  padding-top: 70px;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1200px) {
@@ -2543,7 +2543,7 @@ ul {
   right: -20%;
   bottom: 0;
   padding: 35px 80px;
-  background-color: #fff;
+  background-color: transparent;
 }
 
 @media (max-width: 991px) {
@@ -4342,7 +4342,7 @@ ul {
 .cart_inner .table thead tr th {
   border-top: 0px;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 700;
   font-family: "Poppins", sans-serif;
   color: #797979;
   border-bottom: 0px !important;
@@ -4354,6 +4354,7 @@ ul {
   padding-bottom: 30px;
   vertical-align: middle;
   align-self: center;
+  font-weight: 500;
 }
 
 /* line 1068, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_product.scss */
@@ -7550,7 +7551,8 @@ h6 {
 /**********************footer part css*******************/
 /* line 2, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_footer.scss */
 .footer_part {
-  padding: 130px 0px 25px;
+  padding: 95px 0px 25px;
+  background-color: #f7f7f7;
 }
 
 @media (max-width: 576px) {

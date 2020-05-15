@@ -22,23 +22,21 @@
     <input type="text" name="harga" id="harga" class="form-control" placeholder="Rp1.000.000,00">
   </div>
   <div class="form-group">
-    <label for="status" class="control-label">Stok</label>
-    <input type="text" name="status" id="status" class="form-control">
+    <label for="stok" class="control-label">Stok</label>
+    <input type="text" name="stok" id="stok" class="form-control">
   </div>
   <div class="form-group">
     <label for="gambar"><p class="text-info">Klik Disini Untuk Upload Gambar</p></label>
     <input type="file" name="gambar">
     {{ $errors->first('gambar') }}
   </div>
-  <form action="/upload/proses" method="POST" enctype="multipart/form-data">
-          {{ csrf_field() }}
           
   {{ method_field('POST') }}
   <div class="row">
   <div class="col-sm-2">
                     <div class="form-check">
                             <label class="form-check-label" >Ruang Makan
-                              <input class="form-check-input" name="kategori" id="kategori" type="checkbox" value="rmakan">
+                              <input class="form-check-input" name="kategori" id="kategori" type="checkbox" value="Ruang Makan">
                               <span class="form-check-sign">
                                 <span class=""></span>
                               </span>
@@ -48,7 +46,7 @@
                           <div class="col-sm-2">
                           <div class="form-check">
                             <label class="form-check-label" >Ruang Tamu
-                              <input class="form-check-input" name="kategori" id="kategori" type="checkbox" value="rtamu">
+                              <input class="form-check-input" name="kategori" id="kategori" type="checkbox" value="Ruang Tamu">
                               <span class="form-check-sign">
                                 <span class=""></span>
                               </span>
@@ -58,7 +56,7 @@
                           <div class="col-sm-2">
                           <div class="form-check">
                             <label class="form-check-label" >Ruang Kerja
-                              <input class="form-check-input" name="kategori" id="kategori" type="checkbox" value="rkerja">
+                              <input class="form-check-input" name="kategori" id="kategori" type="checkbox" value="Ruang Kerja">
                               <span class="form-check-sign">
                                 <span class=""></span>
                               </span>
@@ -68,7 +66,7 @@
                           <div class="col-sm-2">
                           <div class="form-check">
                             <label class="form-check-label" >Kamar Tidur
-                              <input class="form-check-input" name="kategori" id="kategori" type="checkbox" value="rkerja">
+                              <input class="form-check-input" name="kategori" id="kategori" type="checkbox" value="Kamar Tidur">
                               <span class="form-check-sign">
                                 <span class=""></span>
                               </span>
@@ -78,7 +76,7 @@
                           <div class="col-sm-2">
                           <div class="form-check">
                             <label class="form-check-label" >Dekorasi
-                              <input class="form-check-input" name="kategori" id="kategori" type="checkbox" value="rkerja">
+                              <input class="form-check-input" name="kategori" id="kategori" type="checkbox" value="Dekorasi">
                               <span class="form-check-sign">
                                 <span class=""></span>
                               </span>

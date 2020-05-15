@@ -19,6 +19,8 @@
         <!-- CSS -->
         <link href="{{ asset('black') }}/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
         <link href="{{ asset('black') }}/css/theme.css" rel="stylesheet" />
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     </head>
     <body class="{{ $class ?? '' }}">
         @auth()
@@ -69,6 +71,8 @@
 
         <script src="{{ asset('black') }}/js/autoNumeric.min.js"></script>
         <script src="{{ asset('black') }}/js/autoNumeric.js"></script>
+
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         
         <script>
             new AutoNumeric('#harga', {
@@ -82,7 +86,7 @@
             })
         </script>
 
-        <!-- <script>
+        <script>
             /* DOM */
             window
             .document
@@ -109,7 +113,7 @@
             /* --- */
 
             }, false );
-        </script> -->
+        </script>
 
         <script>
             $(document).ready(function() {
@@ -208,6 +212,32 @@
                 });
             });
         </script>
+
+        <script>
+                    $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        
+function deleteRow(id)
+        {
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this imaginary file!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        $('#data-'+id).submit();
+                    }
+                });
+        }
+        </script>
+
         @stack('js')
+        @include('sweet::alert')
     </body>
 </html>

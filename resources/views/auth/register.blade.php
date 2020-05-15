@@ -15,9 +15,18 @@
                                 <input type="text" name="name" id="name"  placeholder="Nama Anda" required/>
                             </div>
                             <div class="form-group">
+                                <label for="alamat"><i class="zmdi zmdi-home"></i></label>
+                                <input type="alamat" name="alamat" id="alamat" placeholder="Alamat" required/>
+                            </div>
+                            <div class="form-group">
+                                <label for="no_hp"><i class="zmdi zmdi-phone"></i></label>
+                                <input type="no_hp" name="no_hp" id="no_hp" placeholder="No. Handphone" required/>
+                            </div>
+                            <div class="form-group">
                                 <label for="email"><i class="zmdi zmdi-email"></i></label>
                                 <input type="email" name="email" id="email" placeholder="Email Anda" required/>
                             </div>
+                            <br>
                             <div class="form-group">
                                 <label for="password"><i class="zmdi zmdi-lock"></i></label>
                                 <input type="password" name="password" id="password" placeholder="Password" required/>

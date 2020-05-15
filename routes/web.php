@@ -23,26 +23,47 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
 
+Auth::routes(['verify' => true]);
+
+
 Route::get('logout', 'HomeController@logout');
 Route::get('edit', 'HomeController@edit');
 Route::get('blog', 'HomeController@blog');
 
+Route::get('semua', 'HomeController@semua');
 Route::get('kamar-tidur', 'HomeController@tidur');
 Route::get('ruang-tamu', 'HomeController@tamu');
 Route::get('ruang-makan', 'HomeController@makan');
 Route::get('ruang-kerja', 'HomeController@kerja');
 Route::get('dekorasi', 'HomeController@dekorasi');
 
-Route::get('checkout', 'HomeController@checkout');
 Route::get('contact', 'HomeController@contact');
 Route::get('single-blog', 'HomeController@single_blog');
 Route::get('tracking', 'HomeController@tracking');
-Route::get('cart', 'HomeController@cart');
 
+Route::get('/barang/upload', 'BarangController@upload')->name('upload');
+Route::post('/barang/upload/proses', 'BarangController@proses_upload');
 
 Route::get('confirmation', 'HomeController@confirmation');
 
-Route::get('dashboard', 'HomeController@dashboard')->name('dashboard')->middleware('auth');
+Route::get('cart', 'PesanController@cart')->name('cart');
+Route::delete('cart/{id}', 'PesanController@delete');
+Route::get('confirm-checkout', 'PesanController@konfirmasi')->name('konfirmasi');
+
+Route::post('pesan/{id}', 'PesanController@pesan')->name('pesan');
+
+Route::get('checkout', 'HistoryController@checkout')->name('checkout');
+Route::get('checkout/{id}', 'HistoryController@detail')->name('cdetail');
+
+
+
+
+
+Route::get('kategori/{kategori}','KategoriController@index')->name('kategori.index');
+
+Route::get('dashboard', 'PageController@dashboard')->name('dashboard')->middleware('auth');
+Route::get('pengiriman', 'PageController@pengiriman')->name('pengiriman')->middleware('auth');
+Route::get('pembayaran-admin', 'PageController@padmin')->name('padmin')->middleware('auth');
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-users')->group(function()
     {
@@ -58,6 +79,7 @@ Route::group(['middleware' => 'auth'], function ()
 
 Route::group(['middleware' => 'auth'], function () 
 {
+    Route::get('profile', ['as' => 'profile.index', 'uses' => 'ProfileController@index']);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
@@ -74,13 +96,9 @@ Route::group(['middleware' => 'auth'], function ()
     Route::delete('barang/{barang}','BarangController@destroy')->name('barang.destroy');
 });
 
-Route::group(['middleware' => 'auth'], function ()
+Route::get('detail/{namabarang}','DetailController@index')->name('detail.index');
+
+Route::group(['middleware' => 'auth'], function () 
 {
-    Route::get('/create', 'DetailController@create');
-    Route::get('detail/{namabarang}','DetailController@index')->name('detail.index');
-    Route::get('detail/{detail}', 'DetailController@show')->name('detail.show');
-    Route::post('detail', 'DetailController@store')->name('detail.store');
-    Route::get('detail/{detail}/edit', 'DetailController@edit')->name('detail.edit');
-    Route::patch('detail/{detail}', 'DetailController@update')->name('detail.update');
-    Route::delete('detail/{detail}','DetailController@destroy')->name('detail.destroy');
+	Route::get('pengiriman','CheckoutController@index')->name('checkout.index');
 });

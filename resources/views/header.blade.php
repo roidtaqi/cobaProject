@@ -21,13 +21,14 @@
                                         role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Katalog
                                     </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
-                                        <a class="dropdown-item" href="/ruang-tamu"> ruang tamu</a>
-                                        <a class="dropdown-item" href="/ruang-makan"> ruang makan</a>
-                                        <a class="dropdown-item" href="/kamar-tidur"> kamar tidur</a>
-                                        <a class="dropdown-item" href="/ruang-kerja"> ruang kerja</a>
-                                        <a class="dropdown-item" href="/dekorasi"> dekorasi</a>
-                                    </div>
+                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
+                                        @if(!empty($kategori))
+                                            <?php foreach ($kategori as $kat): ?>
+                                                <a class="dropdown-item" href="{{ $kat->slug }}">{{ $kat->name }}</a>
+                                            <?php endforeach ?>
+                                        @else
+                                      <p>Tidak ada data Barang</p>
+                                    @endif
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown_3"
@@ -36,19 +37,12 @@
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
                                       <!--   <a class="dropdown-item" href="tracking">tracking</a> -->
-                                        <a class="dropdown-item" href="checkout">checkout</a>
-                                        <a class="dropdown-item" href="confirmation">konfirmasi pembayaran</a>
+                                        <a class="dropdown-item" href="/checkout">checkout</a>
+                                        <a class="dropdown-item" href="/confirmation">konfirmasi pembayaran</a>
                                     </div>
                                 </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown_2"
-                                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Tentang Kami
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
-                                         <a class="dropdown-item" href="single-blog">Profil</a>
-                                        <a class="dropdown-item" href="contact">kontak</a>
-                                    </div>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/single-blog">tentang kami</a>
                                 </li>
 
                                 <!-- SINTAKS LOGIN DROPDOWN -->
@@ -69,28 +63,61 @@
                             </li> -->
                             </ul>
                         </div>
-                        <div class="hearer_icon d-flex">
-                            <a id="search_1" href="javascript:void(0)"><i class="ti-search"></i></a>
-                           <!--  <a href=""><i class="ti-heart"></i></a> -->
-                           <div class="icon">
-                                <a href="cart">
+                        @guest
+                        <ul class="navbar-nav">
+                            <li class="hearer_icon d-flex">
+                                <a id="search_1" href="javascript:void(0)"><i class="ti-search"></i></a>
+                            </li>
+                        <li class="icon">
+                                <a href="/cart">
                                     <i class="fas fa-cart-plus"></i>
+                                    <span class="badge badge-pill badge-danger"></span>
                                 </a>
-                            </div>
-                        <div class="user">
-                            <div class="user_login">
-                             @guest
-                                <a href="login" class="btn btn-success" role="button">
-                                    <p>Login</p>
-                                </a>
-                            @endguest
-                            </div>
+                            </li>
+                            <li class="user">
+                                <div class="user_login">
+                                    <a href="/login" class="btn btn-success" role="button">
+                                        <p>Login</p>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    @endguest
                             @auth
-                                <a href="logout">
-                                    <i class="fas fa-sign-out-alt"></i>
+                            <ul class="navbar-nav">
+                            <li class="hearer_icon d-flex">
+                                <a id="search_1" href="javascript:void(0)"><i class="ti-search"></i></a>
+                            </li>
+                        <li class="icon">
+                             <?php
+                                $pesanan_utama = \App\Pesanan::where('user_id', Auth::user()->id)->where('status',0)->first();
+
+                                if (!empty($pesanan_utama)) 
+                                {
+                                $notif = \App\PesananDetail::where('pesanan_id', $pesanan_utama->id)->count();
+                                }
+                            ?>
+                                <a href="/cart">
+                                    <i class="fas fa-cart-plus"></i>
+                                    @if(!empty($notif))
+                                    <span class="badge badge-pill badge-danger">{{ $notif }}</span>
+                                    @endif
                                 </a>
-                            @endauth
+                            </li>
+                        </ul>
+                        <div class="nav-item dropdown">
+                                <a class="nav-link" href="#" id="navbarDropdown_3"
+                                        role="button" data-toggle="dropdown">
+                                    <i class="fas fa-user"></i>
+                                </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
+                                      <!--   <a class="dropdown-item" href="tracking">tracking</a> -->
+                                        <a class="dropdown-item" href="/edit">Profil</a>
+                                        <a class="dropdown-item" href="/logout">Logout</a>
+                                    </div>
                         </div>
+                     @endauth
+                  
                                 <!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <div class="single_product">
     

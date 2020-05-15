@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\ProfileRequest;
+use SweetAlert;
 use App\Http\Requests\PasswordRequest;
 
 class ProfileController extends Controller
@@ -28,7 +29,9 @@ class ProfileController extends Controller
     {
         auth()->user()->update($request->all());
 
-        return back()->withStatus(__('Profile successfully updated.'));
+        alert()->success('Berhasil Ubah Profil', 'Berhasil');
+
+        return back();
     }
 
     /**
@@ -41,6 +44,7 @@ class ProfileController extends Controller
     {
         auth()->user()->update(['password' => Hash::make($request->get('password'))]);
 
-        return back()->withPasswordStatus(__('Password successfully updated.'));
+        alert()->success('Berhasil Ubah Password', 'Berhasil');
+        return back();
     }
 }

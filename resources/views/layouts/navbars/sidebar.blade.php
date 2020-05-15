@@ -30,7 +30,7 @@
                     <b class="caret mt-1"></b>
                 </a>
 
-                <div class="collapse show" id="laravel-examples">
+                <div class="collapse hide" id="laravel-examples">
                     <ul class="nav pl-4">
                         <li @if ($pageSlug == 'tables') class="active " @endif>
                             <a href="{{ route('barang.index') }}">
@@ -38,18 +38,19 @@
                                 <p>{{ __('Barang') }}</p>
                             </a>
                         </li>
-                        <li @if ($pageSlug == 'tables') class="active " @endif>
-                            <a href="{{ route('barang.index')  }}">
+                        <li @if ($pageSlug == 'checkout') class="active " @endif>
+                            <a href="{{ route('checkout.index')  }}">
+                                <i class="tim-icons icon-cart"></i>
+                                <p>{{ __('Pembelian') }}</p>
+                            </a>
+                        </li>
+                        <li @if ($pageSlug == 'padmin') class="active " @endif>
+                            <a href="{{ route('padmin')  }}">
                                 <i class="tim-icons icon-credit-card"></i>
                                 <p>{{ __('Pembayaran') }}</p>
                             </a>
                         </li>
-                        <li @if ($pageSlug == 'tables') class="active " @endif>
-                            <a href="{{ route('barang.index') }}">
-                                <i class="tim-icons icon-delivery-fast"></i>
-                                <p>{{ __('Pengirimian') }}</p>
-                            </a>
-                        </li>
+
                     </ul>
                 </div>
             </li>
@@ -57,6 +58,12 @@
                 <a href="{{ route('pages.maps') }}">
                     <i class="tim-icons icon-square-pin"></i>
                     <p>{{ __('Maps') }}</p>
+                </a>
+            </li>
+            <li @if ($pageSlug == 'home') class="active " @endif>
+                <a href="{{ route('home') }}">
+                    <i class="tim-icons icon-world"></i>
+                    <p>{{ __('Kembali Ke Halaman User') }}</p>
                 </a>
             </li>
         </ul>

@@ -46,7 +46,7 @@
       autoplayHoverPause: true,
       autoplayTimeout: 5000,
       nav: true,
-      navText: ["next", "previous"],
+      navText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>'],
       responsive: {
         0: {
           margin: 15,
@@ -83,7 +83,7 @@
       autoplayHoverPause: true,
       autoplayTimeout: 5000,
       nav: true,
-      navText: ["next", "previous"],
+      navText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>'],
       smartSpeed: 1000,
       responsive: {
         0: {
@@ -146,8 +146,8 @@
     autoplay: true,
     autoplayHoverPause: true,
     autoplayTimeout: 5000,
-    nav: true,
-    navText: ["next", "previous"],
+    nav: false,
+    navText: [],
     smartSpeed: 1000,
     responsive: {
       0: {
@@ -157,7 +157,7 @@
         nav: false
       },
       768: {
-        nav: true
+        nav: false
       }
     }
   });

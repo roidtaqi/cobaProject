@@ -27,7 +27,7 @@
                 </div>
                 <div class="col-sm-6 col-lg-3">
                     <div class="single_footer_part">
-                        <h4>Kontak Kami</h4>
+                        <h4 style="text-align: center;">Kontak Kami</h4>
                         <div class="media contact-info">
                             <span class="contact-info__icon"><i class="ti-home"></i></span>
                             <div class="media-body">
@@ -49,6 +49,12 @@
                                <p>Send us your query anytime!</p>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="single_footer_part">
+                        <h4 style="text-align: center;">Metode Pembayaran</h4>
+                        <img src="img/pay-method.png" alt="">
                     </div>
                 </div>
                <!--  <div class="col-sm-6 col-lg-4">
@@ -79,7 +85,7 @@
                     <div class="col-lg-8">
                         <div class="copyright_text">
                             <P><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-        &copy; 2020 - FurniTour by Symfony Team
+        &copy; 2020 - FurniTour by Symfony Team . All Rights Reserved .
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></P>
                         </div>
                     </div>

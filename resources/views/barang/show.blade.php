@@ -23,5 +23,16 @@
 			<th>Stok</th>
 			<td>{{ $barang->stok }}</td>
 		</tr>
+		<tr>
+			<th>Keterangan</th>
+			<td>{{ $barang->keterangan }}</td>
+		</tr>
+		<tr>
+			<th>Gambar Barang</th>
+			<td><img src="{{ url('uploads') }}/{{ $barang->gambar }}"/></td>
+		</tr>
 	</table>
+	<div>
+		<a href="/barang" class="btn btn-primary"><i class="tim-icons icon-minimal-left"></i></a>
+	</div>
 @endsection
