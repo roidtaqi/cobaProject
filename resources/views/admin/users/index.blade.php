@@ -28,7 +28,8 @@
                                 <td>{{ $user -> email }}</td>
                                 <td>{{  implode(',', $user -> roles()->get()->pluck('name')->toArray()) }}</td>
                                 <td>
-                    
+
+                                <a name="detail" id=""class="btn btn-info float-left" href="{{url('admin/users/'.$user->id) }}" role="button"><i class="tim-icons icon-alert-circle-exc"></i></a>
                                 <a name="edit" id=""class="btn btn-secondary float-left" href="{{ route('admin.users.edit', $user->id) }}" role="button"><i class="tim-icons icon-pencil"></i></a>
                                 <form action="{{ route('admin.users.destroy', $user) }}" method="POST" class="float-left" style="margin-left: 10px">
                                     @csrf

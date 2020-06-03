@@ -2,6 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Pesanan;
+use App\Barang;
+use App\PesananDetail;
+use App\User;
+use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
@@ -13,7 +19,9 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-        return view('checkout.index');
+        $halaman = 'pesanan_detail';
+        $pesanan_detail = PesananDetail::all();
+        return view('checkout.index', compact('halaman','pesanan_detail'));
     }
 
     /**
@@ -45,7 +53,10 @@ class CheckoutController extends Controller
      */
     public function show($id)
     {
-        //
+        $halaman = 'pesanan_detail';
+        $pesanan_detail = PesananDetail::findOrFail($id);
+
+    	return view ('checkout.show', compact('halaman','pesanan_detail'));
     }
 
     /**

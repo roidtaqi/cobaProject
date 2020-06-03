@@ -12,23 +12,34 @@
                     </div>
 
                     <div class="signin-form">
-                        <br>
+                      <br>
                         <h2 class="form-title">Masuk</h2>
-                        <form method="POST" class="register-form" id="login-form">
-                        @csrf
-                        <div class="form-group">
+                            <form method="POST" class="register-form" id="login-form">
+                                {{ method_field('POST') }}
+                                {{csrf_field()}}
+                                <div class="form-group">
                                 <label for="email"> <i class="zmdi zmdi-email"> </i></label>
-                                <input type="email" name="email" id="email" placeholder="Masukkan Email"/>
+                                <input type="email" name="email" class="@error('email') is-invalid @enderror" id="email" placeholder="Masukkan Email" required autocomplete="email"/>
+                                @error('email')
+                                    <script>
+                                        alert("Email atau password yang anda masukkan salah.");
+                                    </script>
+                                @enderror
                             </div>
                             <div class="form-group">
-                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="password" id="password" placeholder="Masukkan Password"/>
+                                <label for="password"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="password" name="password" class="@error('password') is-invalid @enderror" id="password" placeholder="Masukkan Password" required autocomplete="current-password"/>
+                                @error('password')
+                                    <script>
+                                        alert("Email atau password yang anda masukkan salah.");
+                                    </script>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
                                 <label for="remember-me" class="label-agree-term"><span><span></span></span>Ingat saya</label>
                             <div class="form-group float-right">
-                                <a href="#">Lupa Password</a>
+                                <a href="/lupa">Lupa Password</a>
                             </div>
                         </div>
                             <br>

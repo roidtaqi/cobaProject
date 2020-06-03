@@ -35,10 +35,11 @@
             <thead>
               <tr>
                 <th scope="col">No. </th>
-                <th colspan="2" style="text-align: center;">Produk</th>
+                <th scope="col">Gambar</th>
+                <th scope="col">Nama Produk</th>
                 <th scope="col">Jumlah</th>
                 <th scope="col">Harga</th>
-                <th scope="col">Total</th>
+                <th scope="col">Subtotal</th>
                 <th scope="col"></th>
               </tr>
             </thead>
@@ -49,18 +50,45 @@
                 <td>{{ $no++ }}</td>
                 <td><img src="{{ url('uploads') }}/{{ $pd->barang->gambar }}" width="100" /></td>
                 <td>{{ $pd->barang->namabarang }}</td>
-                <td>{{ $pd->jumlah }} buah</td>
+                <td>{{ $pd->jumlah }} unit</td>
                 <td align="left">Rp. {{ number_format($pd->barang->harga) }}</td>
                 <td align="left">Rp. {{ number_format($pd->jumlah_harga) }}</td>
                 <td>
-                  <form action="{{ url('cart') }}/{{ $pd->id }}" method="post">
-                    @csrf
-                    {{ method_field('DELETE') }}
-                    <button type="submit" class="btn btn-danger btn-sm" onclick=" return confirm('Anda yakin akan menghapus data ?');">
-                        <i class="fa fa-trash"></i>
-                    </button>
+                 
+                   <!-- Button to Open the Modal -->
+                      <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusCart">
+                        <i class="fas fa-trash"></i>
+                      </button>
 
-                  </form>
+                      <!-- The Modal -->
+                      <div class="modal" id="hapusCart">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                              <h4 class="modal-title">Peringatan</h4>
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                              Anda Yakin akan menghapus barang ?
+                            </div>
+                           <form action="{{ url('cart') }}/{{ $pd->id }}" method="post">
+                            @csrf
+                            {{ method_field('DELETE') }}
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                              <button type="submit" class="btn btn-danger">Hapus</button>
+                              <button type="button" class="btn btn-light" data-dismiss="modal">Batal</button>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+
+                 
                 </td>
               </tr>
 
@@ -73,12 +101,13 @@
               <tr>
                 <td colspan="5" align="right"><strong>Total  : </strong></td>
                 <td><strong>Rp. {{ number_format($pesanan->jumlah_harga) }}</strong></td>
+                <td colspan="1"></td>
               </tr>
             </tbody>
           </table>
-          <div class="checkout_btn_inner float-right">
-            <a class="btn_1" href="/">Lanjut Berbelanja</a>
-            <a class="btn_1 checkout_btn_1" href="{{ url('confirm-checkout') }}">Proses Checkout</a>
+          <div class="checkout_btn_inner">
+            <a class="btn_1" style="float: left;" href="{{ url('/semua') }}"> <i class="fas fa-store"></i> Lanjut Berbelanja</a>
+            <a class="btn_3 checkout_btn_1 mr-5" style="float: right;" href="{{ url('confirm-cart') }}">Proses Checkout  <i class="fas fa-cash-register"></i></a>
           </div>
         </div>
       </div>

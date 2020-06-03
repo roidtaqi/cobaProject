@@ -15,11 +15,14 @@ class CreatePesanansTable extends Migration
     {
         Schema::create('pesanans', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id');
+            $table->string('user_id');
             $table->date('tanggal');
             $table->string('status');
+            $table->string('resi')->nullable();
+            $table->string('status_kirim')->nullable();
             $table->integer('kode');
             $table->integer('jumlah_harga');
+            $table->string('file')->nullable();
             $table->timestamps();
         });
     }

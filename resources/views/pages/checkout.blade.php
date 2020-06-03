@@ -69,45 +69,14 @@
       <div class="billing_details">
         <div class="row">
           <div class="col-lg-6">
-            <h2 align="center">Data Penagihan</h2>
-            <hr>
             <br>
-             <table class="table table-striped mt-3">
-                        <tbody>
-                        <tr>
-                            <td>Nama</td>
-                            <td width="5">:</td>
-                            <td>{{ old('name', auth()->user()->name) }}</td>
-                        </tr>    
-                        <tr>
-                            <td>Email</td>
-                            <td width="5">:</td>
-                            <td>{{ old('email', auth()->user()->email) }}</td>
-                        </tr>
-                        <tr>
-                            <td>No. Handphone</td>
-                            <td width="5">:</td>
-                            <td>{{ old('no_hp', auth()->user()->no_hp) }}</td>
-                        </tr>
-                        <tr>
-                            <td>Alamat</td>
-                            <td width="5">:</td>
-                            <td>{{ old('alamat', auth()->user()->alamat) }}</td>
-                        </tr>    
-
-                        </tbody>
-                    </table>
-          </div>
-
-          <div class="col-lg-6">
-            <div class="order_box">
-              <h2 align="center">Pesanan Anda</h2>
-              <table class="table table-bordered">
+            <h2 align="center">Pesanan Anda</h2>
+            <table class="table table-striped">
                 <thead>
                   <tr align="center">
                     <th>Produk</th>
                     <th colspan="1"></th>
-                    <th>Harga</th>
+                    <th>Harga <sub style="color: black;">/ brg</sub></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -117,10 +86,10 @@
                     <td align="center"><strong> x {{ $pd->jumlah }}</strong></td>
                     <td align="center"><strong>Rp. {{ number_format ($pd->barang->harga) }}</strong></td>
                   </tr>
-                </tbody>
                   @endforeach
+                </tbody>
 
-              <table class="table table-bordered">
+              <!-- <table class="table table-bordered">
                   <tbody>
                     <tr>
                      <td>
@@ -147,15 +116,49 @@
                      <td align="center"><strong>Rp. {{ number_format ($pd->pesanan->jumlah_harga+$pd->pesanan->kode) }}</strong></td>
                   </tr>
                   </tbody>
-                </table>
+                </table> -->
               </table>
-              
-              <div class="creat_account">
-                <input type="checkbox" id="f-option4" name="selector" required/>
-                <label for="f-option4">Saya telah membaca dan menyetujui </label>
-                <a href="#">Syarat dan Ketentuan</a>
-              </div>
-              <a class="btn_3" href="#">Checkout</a>
+             
+           <!--  <a class="btn_1 mt-1" href="{{ url('edit') }}"><i class="fas fa-user"></i> Ubah Data</a> -->
+          </div>
+
+          <div class="col-lg-6">
+            <div class="order_box">
+              <h2 align="center">Info Tagihan</h2>
+              <table class="table table-striped">
+                <tbody>
+                  <tr>
+                    <td><h5>Kode Transaksi</h5></td>
+                    <td align="center"> : </td>
+                    <td align="center"><strong>{{ $pesanans->kode}}</strong></td>
+                  </tr> 
+                  <tr>
+                    <td>
+                    <h5>Subtotal</h5>
+                    </td>
+                    <td align="center"> : </td>
+                    <td align="center"><strong>Rp. {{ number_format ($pesanans->jumlah_harga) }}</strong></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h5>Transfer</h5>
+                    </td>
+
+                    <td align="center"> : </td>
+                    <td align="center"><strong>Rp. {{ number_format ($pesanans->kode) }}</strong></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h5>Total</h5>
+                    </td>
+
+                    <td align="center"> : </td>
+                    <td align="center"><strong>Rp. {{ number_format ($pesanans->jumlah_harga+$pesanans->kode) }}</strong></td>
+                  </tr>   
+                </tbody>
+              </table>
+              <br>
+              <a class="btn_3 mt-3" href="{{ url('confirm-checkout') }}">Buat Pesanan</a>
             </div>
           </div>
         </div>
@@ -168,3 +171,4 @@
 @section ('footer')
     @include ('footer')
 @stop
+

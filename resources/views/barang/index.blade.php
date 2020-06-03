@@ -40,13 +40,7 @@
 					<td>
                         <a name="detail" id=""class="btn btn-info float-left" href="{{url('barang/'.$barang->id) }}" role="button"><i class="tim-icons icon-alert-circle-exc"></i></a>
 						<a name="edit" style="margin-left: 5px" id=""class="btn btn-secondary float-left" href="{{ route('barang.edit', $barang->id) }}" role="button"><i class="tim-icons icon-pencil"></i></a>
-						<form action="{{ route('barang.destroy', $barang->id) }}" method="POST" class="float-left" style="margin-left: 5px" id="barang/{{ $barang->id }}">
-                        {{csrf_field()}}
-                        {{ method_field('DELETE') }}
-						<a href="{{ route('barang.destroy', $barang->id) }}"></a>
-						<button class="btn btn-danger" onclick="deleteRow('barang.destroy')" type="submit"><i class="tim-icons icon-trash-simple"></i></button>
-						</form>
-                    </td>
+						<button type="button" class="btn btn-danger float-left" style="margin-left: 5px" data-toggle="modal" data-target="#delete"><i class="tim-icons icon-trash-simple"></i></button>
                     </td>
                 </tr>
 				<?php endforeach ?>
@@ -68,5 +62,32 @@
 			</div>
 		</div>
 	</div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="text-warning" id="exampleModalLabel">PERINGATAN!</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+	  <form action="{{ route('barang.destroy', $barang->id) }}" method="POST" id="barang/{{ $barang->id }}">
+                        {{csrf_field()}}
+                        {{ method_field('DELETE') }}
+		Apakah anda yakin ingin menghapus barang?
+		<br><br>
+      </div>
+      <div class="modal-footer">
+		<button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+		<a href="{{ route('barang.destroy', $barang->id) }}"></a>
+		<button type="submit" class="btn btn-warning">Saya yakin</button>
+		</form>
+      </div>
+    </div>
+  </div>
 </div>
 @endsection

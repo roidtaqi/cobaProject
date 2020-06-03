@@ -91,4 +91,10 @@ class UsersController extends Controller
 
         return redirect()->route('admin.users.index');
     }
+
+    public function show($id){
+    	$halaman = 'user';
+    	$user = User::findOrFail($id);
+    	return view ('admin.users.show', compact('halaman', 'user'));
+	}
 }

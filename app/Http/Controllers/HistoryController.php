@@ -10,37 +10,37 @@ use App\User;
 use Auth;
 use SweetAlert;
 use Carbon\Carbon;
-use App\Kategori;
 
 class HistoryController extends Controller
 {
      public function __construct(){
-    	$this->middleware('auth');
+        $this->middleware('auth');
     }
 
-    public function checkout(){
-    $pesanans = Pesanan::where('user_id', Auth::user()->id)->where('status', 0)->first();
-    
-    //Untuk menampilkan kategori
-    $kategori = Kategori::all();
+    public function konfirmasi(){
+        $token = csrf_token();
+        $user = User::where('id', $token)->first();
 
-    $pesanan_id = $pesanans->id;
+        $pesanan = Pesanan::where('user_id', $token)->where('status', 0)->first();
+        $pesanan_id = $pesanan->id;
+        $pesanan->status = 1;
+        $pesanan->update();
 
-    $pesanan_details = PesananDetail::where('pesanan_id', $pesanan_id)->get();
-    	foreach ($pesanan_details as $pd) {
-    		$barang = Barang::where('id', $pd->barang_id)->first();
-    	}
-    	
-    	return view('pages.checkout', compact('pesanans', 'pesanan_details','kategori'));
+        $pesanan_details = PesananDetail::where('pesanan_id', $pesanan_id)->get();
+        foreach ($pesanan_details as $pd) {
+            $barang = Barang::where('id', $pd->barang_id)->first();
+            $barang->stok = $barang->stok-$pd->jumlah;
+            $barang->update();
+        }
+
+        alert()->success('Berhasil Buat Pesanan', 'Berhasil');
+        return redirect('riwayat');
     }
 
-    public function detail($id){
-    	$pesanans = Pesanan::where('id', $id)->first();
-        $pesanan_details = PesananDetail::where('pesanan_id', $pesanan->id)->get();
-        
-        //Untuk menampilkan kategori
-        $kategori = Kategori::all();
+     public function riwayat(){
+       $token = csrf_token();
+       $pesanans = Pesanan::where('user_id', $token)->where('status', '!=',0)->get();
 
-    	return view('pages.history', compact('pesanans','pesanan_details','kategori'));
+        return view('pages.riwayat', compact('pesanans'));
     }
 }

@@ -18,9 +18,11 @@
                     <div class="single_footer_part">
                         <h4>Layanan Pelanggan</h4>
                         <ul class="list-unstyled">
-                            <li><a href="checkout">Checkout</a></li>
-                            <li><a href="konfirmasi">Konfirmasi Pembayaran</a></li>
-                            <li><a href="single-blog">Tentang Kami</a></li>
+                            <li><a href="/faq">FAQ</a></li>
+                            <li><a href="/faq">Cara Pembelian</a></li>
+                            <li><a href="/syarat">Syarat dan Ketentuan</a></li>
+                            <li><a href="/kebijakan">Kebijakan Privasi</a></li>
+                            <li><a href="/single-blog">Tentang Kami</a></li>
                         </ul>
                     </div>
                        
@@ -54,7 +56,7 @@
                 <div class="col-sm-6 col-lg-3">
                     <div class="single_footer_part">
                         <h4 style="text-align: center;">Metode Pembayaran</h4>
-                        <img src="img/pay-method.png" alt="">
+                        <img src="../img/pay-method.png" alt="">
                     </div>
                 </div>
                <!--  <div class="col-sm-6 col-lg-4">

@@ -1,5 +1,5 @@
  <!--::header part start::-->
-    <header class="main_menu home_menu">
+ <header class="main_menu home_menu">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-12">
@@ -24,22 +24,18 @@
                                      <div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
                                         @if(!empty($kategori))
                                             <?php foreach ($kategori as $kat): ?>
-                                                <a class="dropdown-item" href="{{ $kat->slug }}">{{ $kat->name }}</a>
+                                                <a class="dropdown-item" href="/{{ $kat->slug }}">{{ $kat->name }}</a>
                                             <?php endforeach ?>
                                         @else
                                       <p>Tidak ada data Barang</p>
                                     @endif
                                 </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown_3"
-                                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Order
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
+                                <li class="nav-item">
+                                    <!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown_2"> -->
                                       <!--   <a class="dropdown-item" href="tracking">tracking</a> -->
-                                        <a class="dropdown-item" href="/checkout">checkout</a>
-                                        <a class="dropdown-item" href="/confirmation">konfirmasi pembayaran</a>
-                                    </div>
+                                        <a class="nav-link" href="/riwayat">Riwayat Pemesanan</a>
+                                        <!-- <a class="dropdown-item" href="/confirmation">konfirmasi pembayaran</a> -->
+                                    <!-- </div> -->
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="/single-blog">tentang kami</a>
@@ -68,10 +64,21 @@
                             <li class="hearer_icon d-flex">
                                 <a id="search_1" href="javascript:void(0)"><i class="ti-search"></i></a>
                             </li>
-                        <li class="icon">
+                       <li class="icon">
+                             <?php
+                                $token = csrf_token();
+                                $pesanan_utama = \App\Pesanan::where('user_id', $token)->where('status',0)->first();
+
+                                if (!empty($pesanan_utama)) 
+                                {
+                                $notif = \App\PesananDetail::where('pesanan_id', $pesanan_utama->id)->count();
+                                }
+                            ?>
                                 <a href="/cart">
                                     <i class="fas fa-cart-plus"></i>
-                                    <span class="badge badge-pill badge-danger"></span>
+                                    @if(!empty($notif))
+                                    <span class="badge badge-pill badge-danger">{{ $notif }}</span>
+                                    @endif
                                 </a>
                             </li>
                             <li class="user">
@@ -90,7 +97,8 @@
                             </li>
                         <li class="icon">
                              <?php
-                                $pesanan_utama = \App\Pesanan::where('user_id', Auth::user()->id)->where('status',0)->first();
+                                $token = csrf_token();
+                                $pesanan_utama = \App\Pesanan::where('user_id', $token)->where('status',0)->first();
 
                                 if (!empty($pesanan_utama)) 
                                 {

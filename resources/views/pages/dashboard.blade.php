@@ -14,21 +14,21 @@
                             <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
                             <label class="btn btn-sm btn-primary btn-simple active" id="0">
                                 <input type="radio" name="options" checked>
-                                <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Akun</span>
+                                <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Pembelian</span>
                                 <span class="d-block d-sm-none">
                                     <i class="tim-icons icon-single-02"></i>
                                 </span>
                             </label>
                             <label class="btn btn-sm btn-primary btn-simple" id="1">
                                 <input type="radio" class="d-none d-sm-none" name="options">
-                                <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Pembelian</span>
+                                <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Pengiriman</span>
                                 <span class="d-block d-sm-none">
                                     <i class="tim-icons icon-gift-2"></i>
                                 </span>
                             </label>
                             <label class="btn btn-sm btn-primary btn-simple" id="2">
                                 <input type="radio" class="d-none" name="options">
-                                <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Sesi</span>
+                                <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Akun</span>
                                 <span class="d-block d-sm-none">
                                     <i class="tim-icons icon-tap-02"></i>
                                 </span>
@@ -49,8 +49,8 @@
         <div class="col-lg-4">
             <div class="card card-chart">
                 <div class="card-header">
-                    <h5 class="card-category">Total Pengiriman</h5>
-                    <h3 class="card-title"><i class="tim-icons icon-bell-55 text-primary"></i> 763,215</h3>
+                    <h5 class="card-category">Pembelian</h5>
+                    <h3 class="card-title"><i class="tim-icons icon-bell-55 text-primary"></i>{{ $pengiriman }}</h3>
                 </div>
                 <div class="card-body">
                     <div class="chart-area">
@@ -62,8 +62,8 @@
         <div class="col-lg-4">
             <div class="card card-chart">
                 <div class="card-header">
-                    <h5 class="card-category">Penjualan Harian</h5>
-                    <h3 class="card-title"><i class="tim-icons icon-delivery-fast text-info"></i> Rp. 35.000.000</h3>
+                    <h5 class="card-category">Total Pengiriman</h5>
+                    <h3 class="card-title"><i class="tim-icons icon-delivery-fast text-info"></i>{{ $pembelian }}</h3>
                 </div>
                 <div class="card-body">
                     <div class="chart-area">
@@ -75,8 +75,8 @@
         <div class="col-lg-4">
             <div class="card card-chart">
                 <div class="card-header">
-                    <h5 class="card-category">Tugas Terselesaikan</h5>
-                    <h3 class="card-title"><i class="tim-icons icon-send text-success"></i> 12,100K</h3>
+                    <h5 class="card-category">Pengguna Yang Terdaftar</h5>
+                    <h3 class="card-title"><i class="tim-icons icon-send text-success"></i>{{ $user }}</h3>
                 </div>
                 <div class="card-body">
                     <div class="chart-area">
@@ -257,19 +257,9 @@
                           </tr>
                         </thead>
                         <tbody>
-                        @if(!empty($user))
-				        <?php foreach ($user as $u): ?>  
                             <tr>
-                                <th scope="row">{{ $u -> id }}</th>
-                                <td>{{ $u -> name }}</td>
-                                <td>{{ $u -> email }}</td>
-                                <td>{{  implode(',', $u -> roles()->get()->pluck('name')->toArray()) }}</td>
                             </tr>
                         </tbody>
-                        <?php endforeach ?>
-                        @else
-                        <p>Tidak ada data Data</p>
-                        @endif
                   </table>
                 </div>
               </div>

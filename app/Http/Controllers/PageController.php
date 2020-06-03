@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 use App\User;
 use App\Http\Requests\UserRequest;
+use Illuminate\Support\Facades\DB;
+use App\Pesanan;
+use App\PesananDetail;
 use Illuminate\Support\Facades\Hash;
 
 class PageController extends Controller
@@ -42,7 +45,12 @@ class PageController extends Controller
         $lihat = User::all();
         $lihat = 'user';
         $lihat_list = User::orderBy('id', 'asc')->paginate('15');
-        return view('pages.dashboard');
+        $pengiriman = Pesanan::count('id');
+        $pembelian = DB::table('pesanans')
+        -> where('pesanans.status','=','1')
+        -> count();
+        $user = User::count('id');
+        return view('pages.dashboard', compact('pengiriman','pembelian','user'));
     }
 
     public function padmin()

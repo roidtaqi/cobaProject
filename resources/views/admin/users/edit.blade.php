@@ -13,7 +13,7 @@
               {{ method_field('POST') }}
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label for="exampleInputEmail1">Email address</label>
+                      <label for="exampleInputEmail1">Email</label>
                       <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user->email }}" required autocomplete="email" autofocus>
                           @error('email')
                               <span class="invalid-feedback" role="alert">
@@ -24,9 +24,20 @@
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label for="name">Full Name</label>
+                      <label for="name">Nama Lengkap</label>
                       <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $user->name }}" required autofocus>
                           @error('name')
+                              <span class="invalid-feedback" role="alert">
+                                  <strong>{{ $message }}</strong>
+                              </span>
+                          @enderror
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="status_verfied">Status Verfikasi</label>
+                      <input id="status_verfied" type="text" class="form-control @error('status_verfied') is-invalid @enderror" name="status_verfied" value="{{ $user->status_verfied }}" placeholder="Terverifikasi / Belum Terverfikasi" required autofocus>
+                          @error('status_verfied')
                               <span class="invalid-feedback" role="alert">
                                   <strong>{{ $message }}</strong>
                               </span>

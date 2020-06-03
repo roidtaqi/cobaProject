@@ -48,6 +48,27 @@ class BarangController extends Controller
 		return redirect('barang');
 	}
 
+	public function proses_upload(Request $request){
+		$this->validate($request, [
+			'file' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
+		]);
+ 
+		// menyimpan data file yang diupload ke variabel $file
+		$file = $request->file('file');
+ 
+		$nama_file = time()."_".$file->getClientOriginalName();
+ 
+      	// isi dengan nama folder tempat kemana file diupload
+		$tujuan_upload = 'data_file';
+		$file->move($tujuan_upload,$nama_file);
+ 
+		Barang::create([
+			'file' => $nama_file,
+		]);
+ 
+		return redirect()->back();
+    }
+
 	// public function proses_upload(Request $request){
 	// 	$this->validate($request, [
 	// 		'file' => 'required',
@@ -80,4 +101,22 @@ class BarangController extends Controller
 	// 	$tujuan_upload = 'data_file';
 	// 	$file->move($tujuan_upload,$file->getClientOriginalName());
 	// }
+
+	  //   public function padmin()
+  //   {
+  //       return view('pages.pembayaran-admin');
+  //   }
+
+  //   public function pengiriman()
+  //   {
+  //       return view('pages.pengiriman');
+  //   }
+
+  //   public function dashboard()
+  //   {
+  //       $lihat = User::all();
+  //       $lihat = 'user';
+		// $lihat_list = User::orderBy('id', 'asc')->paginate('5');
+  //       return view('pages.dashboard');
+  //   }
 }

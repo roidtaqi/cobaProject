@@ -32,25 +32,21 @@
                      <img class="img-fluid" src="img/blog/single_blog_1.png" alt="">
                   </div>
                   <div class="blog_details">
-                     <h2>Second divided from form fish beast made every of seas
-                        all gathered us saying he our
+                     <h2>Website ini Dibangun Sebagai Project Akhir Mata Kuliah Desain dan Pemrograman Web
                      </h2>
                      <ul class="blog-info-link mt-3 mb-4">
                         <!-- <li><a href="#"><i class="far fa-user"></i> Travel, Lifestyle</a></li> -->
-                        <li><a href="#"><i class="far fa-comments"></i> 17 April 2020</a></li>
+                        <li><a href="#"><i class="far fa-comments"></i> 17 April 2020 - 10 Juni 2020</a></li>
                      </ul>
                      <p class="excert">
-                        MCSE boot camps have its supporters and its detractors. Some people do not understand why you
-                        should have to spend money on boot camp when you can get the MCSE study materials yourself at a
-                        fraction of the camp price. However, who has the willpower
+                      <strong> Dosen Pengampu : Rajiansyah, S.Kom., M.Sc </strong>
                      </p>
                      <p>
-                        MCSE boot camps have its supporters and its detractors. Some people do not understand why you
-                        should have to spend money on boot camp when you can get the MCSE study materials yourself at a
-                        fraction of the camp price. However, who has the willpower to actually sit through a
-                        self-imposed MCSE training. who has the willpower to actually
+                       <strong> Oleh : <br>
+                       Nama : Ardy Ferdian Ramadhan (18615006) & Muhammad Roid Taqi (18615022)<br>
+                       Kelas : TI 4A </strong>
                      </p>
-                     <div class="quote-wrapper">
+                     <!-- <div class="quote-wrapper">
                         <div class="quotes">
                            MCSE boot camps have its supporters and its detractors. Some people do not understand why you
                            should have to spend money on boot camp when you can get the MCSE study materials yourself at
@@ -70,7 +66,7 @@
                         self-imposed MCSE training. who has the willpower to actually
                      </p>
                   </div>
-               </div>
+               </div> -->
                <!-- <div class="navigation-top">
                   <div class="d-sm-flex justify-content-between text-center">
                      <p class="like-info"><span class="align-middle"><i class="far fa-heart"></i></span> Lily and 4

@@ -24,13 +24,13 @@
                 </a>
             </li>
             <li>
-                <a data-toggle="collapse" href="#laravel-examples" aria-expanded="true">
+                <a data-toggle="collapse" href="#tes" aria-expanded="true">
                     <i class="tim-icons icon-bullet-list-67" ></i>
-                    <span class="nav-link-text" >{{ __('Detail Barang') }}</span>
+                    <span class="nav-link-text" >{{ __('Transaksi') }}</span>
                     <b class="caret mt-1"></b>
                 </a>
 
-                <div class="collapse hide" id="laravel-examples">
+                <div class="collapse hide" id="tes">
                     <ul class="nav pl-4">
                         <li @if ($pageSlug == 'tables') class="active " @endif>
                             <a href="{{ route('barang.index') }}">
@@ -44,10 +44,10 @@
                                 <p>{{ __('Pembelian') }}</p>
                             </a>
                         </li>
-                        <li @if ($pageSlug == 'padmin') class="active " @endif>
-                            <a href="{{ route('padmin')  }}">
-                                <i class="tim-icons icon-credit-card"></i>
-                                <p>{{ __('Pembayaran') }}</p>
+                        <li @if ($pageSlug == 'pengiriman') class="active " @endif>
+                            <a href="{{ route('pengiriman.index')  }}">
+                                <i class="tim-icons icon-delivery-fast"></i>
+                                <p>{{ __('Pengiriman') }}</p>
                             </a>
                         </li>
 

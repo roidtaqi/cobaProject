@@ -80,6 +80,6 @@ class RegisterController extends Controller
 
         alert()->success('','Selamat Datang, ' .$user->name. ' !');
         return $user;
-        return redirect('home');
+        return redirect('/login');
     }
 }

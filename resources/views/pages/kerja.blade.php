@@ -41,7 +41,7 @@
                                             <?php foreach ($kategori as $kat): ?>
                                                 <li>
                                                     <a href="{{ $kat->slug }}">{{ $kat->name }}</a>
-                                                    <span>(250)</span>
+                                                    <span></span>
                                                 </li>
                                             <?php endforeach ?>
                                         @else
@@ -204,8 +204,8 @@
                                 <img src="{{ url('uploads') }}/{{ $ba->gambar }}">
                                 <div class="single_product_text">
                                     <h4>{{ $ba->namabarang }}</h4>
-                                    <h3>{{ $ba->harga }}</h3>
-                                    <a href="{{ url('detail') }}/{{ $ba->namabarang }}" class="add_cart">+ tambah ke keranjang<i class="ti-heart"></i></a>
+                                    <h3>Rp. {{ number_format($ba->harga) }}</h3>
+                                    <a href="{{ url('detail') }}/{{ $ba->namabarang }}" class="add_cart">Lihat Detail></a>
                                 </div>
                             </div>
                         </div>

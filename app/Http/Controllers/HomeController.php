@@ -31,7 +31,8 @@ class HomeController extends Controller
     {
         $hasil = Barang::where('rekomendasi', "ya")->get();
         $kategori = Kategori::all();
-        return view('pages.home_login',['barang'=>$hasil,'kategori'=>$kategori]);
+        $status = User::where('status_verified', "")->first();
+        return view('pages.home_login',['barang'=>$hasil,'kategori'=>$kategori,'user'=>$status]);
     }
 
      public function blog()
@@ -94,11 +95,30 @@ class HomeController extends Controller
         return view('pages.contact',['kategori'=>$kategori]);
     }
 
+     public function faq()
+    {
+        $kategori = Kategori::all();
+        return view('help.faq',['kategori'=>$kategori]);
+    }
+
+    public function syarat()
+    {
+        $kategori = Kategori::all();
+        return view('help.syarat',['kategori'=>$kategori]);
+    }
+
+    public function kebijakan()
+    {
+        $kategori = Kategori::all();
+        return view('help.kebijakan',['kategori'=>$kategori]);
+    }
+
     public function single_blog()
     {
         $kategori = Kategori::all();
         return view('pages.single-blog',['kategori'=>$kategori]);
     }
+
     public function tracking()
     {
         $kategori = Kategori::all();
@@ -110,24 +130,6 @@ class HomeController extends Controller
         $kategori = Kategori::all();
         return view('pages.confirmation',['kategori'=>$kategori]);
     }
-
-  //   public function padmin()
-  //   {
-  //       return view('pages.pembayaran-admin');
-  //   }
-
-  //   public function pengiriman()
-  //   {
-  //       return view('pages.pengiriman');
-  //   }
-
-  //   public function dashboard()
-  //   {
-  //       $lihat = User::all();
-  //       $lihat = 'user';
-		// $lihat_list = User::orderBy('id', 'asc')->paginate('5');
-  //       return view('pages.dashboard');
-  //   }
 
       public function cart()
     {
@@ -158,7 +160,7 @@ class HomeController extends Controller
 		$nama_file = time()."_".$file->getClientOriginalName();
  
       	        // isi dengan nama folder tempat kemana file diupload
-		$tujuan_upload = 'data_file';
+		$tujuan_upload = 'uploads';
 		$file->move($tujuan_upload,$nama_file);
  
 		User::create([
@@ -166,6 +168,11 @@ class HomeController extends Controller
 		]);
  
 		return redirect()->back();
-	}
+    }
+    
+    public function lupa()
+    {
+        return view('pages.lupa-password');
+    }
 
 }

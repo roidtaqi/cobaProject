@@ -34,7 +34,12 @@
                             <td>Alamat</td>
                             <td width="5">:</td>
                             <td>{{ old('alamat', auth()->user()->alamat) }}</td>
-                        </tr>  
+                        </tr>
+                        <tr>
+                            <td>Status Veirifikasi</td>
+                            <td width="5">:</td>
+                            <td>{{ old('status_verified', auth()->user()->status_verified) }}</td>
+                        </tr>
 
                         </tbody>
                     </table>
@@ -70,17 +75,17 @@
                                 @include('alerts.feedback', ['field' => 'alamat'])
                             </div>
                             <form action="/upload/proses" method="POST" enctype="multipart/form-data">
-					        {{ csrf_field() }}
-                            
-                            <div class="form-group">
-                                <b>Upload KTP</b><br/>
-                                <input type="file" name="file">
-                            </div>
-                            <br>
-                             <button type="submit" class="btn btn-fill btn-primary">{{ __('Ubah Profil') }}</button>
-                            <br>
-                            <br>
-                        </form>
+                                {{ csrf_field() }}
+                                
+                                <div class="form-group">
+                                    <b>Upload KTP</b><br/>
+                                    <input type="file" name="file">
+                                </div>
+                                <br>
+                                <button type="submit" class="btn btn-fill btn-primary">{{ __('Ubah Profil') }}</button>
+                                <br>
+                                <br>
+                            </form>
 
                             <h4><strong>Ubah Password</strong></h4>
                             <hr>
