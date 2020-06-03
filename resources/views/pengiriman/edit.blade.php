@@ -71,7 +71,7 @@
   <div class="col-sm-3">
                     <div class="form-check">
                             <label class="form-check-label" >Pesanan Dalam Proses Konfirmasi
-                              <input class="form-check-input" name="status_kirim" id="status_kirim" type="checkbox" value="0">
+                              <input class="form-check-input" name="status_kirim" id="status_kirim" type="checkbox" value="0" @if($pesanan->status_kirim == 0) checked @endif>
                               <span class="form-check-sign">
                                 <span class=""></span>
                               </span>
@@ -81,7 +81,7 @@
                           <div class="col-sm-2">
                           <div class="form-check">
                             <label class="form-check-label" >Paket Telah Dipacking
-                              <input class="form-check-input" name="status_kirim" id="status_kirim" type="checkbox" value="1">
+                              <input class="form-check-input" name="status_kirim" id="status_kirim" type="checkbox" value="1" @if($pesanan->status_kirim == 1) checked @endif>
                               <span class="form-check-sign">
                                 <span class=""></span>
                               </span>
@@ -91,7 +91,7 @@
                           <div class="col-sm-3">
                           <div class="form-check">
                             <label class="form-check-label" >Paket Dikirim Menuju Transit Hub
-                              <input class="form-check-input" name="status_kirim" id="status_kirim" type="checkbox" value="2">
+                              <input class="form-check-input" name="status_kirim" id="status_kirim" type="checkbox" value="2" @if($pesanan->status_kirim == 2) checked @endif>
                               <span class="form-check-sign">
                                 <span class=""></span>
                               </span>
@@ -101,7 +101,7 @@
                           <div class="col-sm-2">
                           <div class="form-check">
                             <label class="form-check-label" >Paket Menuju Alamat Penerima
-                              <input class="form-check-input" name="status_kirim" id="status_kirim" type="checkbox" value="3">
+                              <input class="form-check-input" name="status_kirim" id="status_kirim" type="checkbox" value="3" @if($pesanan->status_kirim == 3) checked @endif>
                               <span class="form-check-sign">
                                 <span class=""></span>
                               </span>
@@ -111,7 +111,7 @@
                           <div class="col-sm-2">
                           <div class="form-check">
                             <label class="form-check-label" >Paket Telah Diterima
-                              <input class="form-check-input" name="status_kirim" id="status_kirim" type="checkbox" value="4">
+                              <input class="form-check-input" name="status_kirim" id="status_kirim" type="checkbox" value="4" @if($pesanan->status_kirim == 4) checked @endif>
                               <span class="form-check-sign">
                                 <span class=""></span>
                               </span>
