@@ -42,7 +42,9 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
-        //
+		$input = $request->all();
+        Pesanan::create($input);
+        return view('pembelian');
     }
 
     /**
@@ -67,7 +69,9 @@ class CheckoutController extends Controller
      */
     public function edit($id)
     {
-        //
+        $halaman = 'pesanan';
+        $pesanan = Pesanan::findOrFail($id);
+        return view('checkout.edit',compact('halaman','pesanan'));
     }
 
     /**
@@ -79,7 +83,9 @@ class CheckoutController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pesanan = Pesanan::findOrFail($id);
+        $pesanan -> update($request->all());
+        return redirect('pembelian');
     }
 
     /**

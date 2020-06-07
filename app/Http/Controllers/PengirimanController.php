@@ -15,7 +15,7 @@ class PengirimanController extends Controller
     public function index()
     {
         $halaman = 'pesanan';
-        $pesanan = Pesanan::where('status', "1")->get();
+        $pesanan = Pesanan::where('status','>=', "1")->get();
         return view('pengiriman.index', compact('halaman','pesanan'));
     }
 

@@ -50,7 +50,7 @@
                   @if($ps->status == 1)
                   Menunggu Pembayaran
                   @elseif ($ps->status == 2)
-                  Pesanan Sedang Diproses
+                  Pesanan Telah Diproses
                   @elseif ($ps->status == 3)
                   Pesanan Telah Selesai
                   @endif
@@ -76,20 +76,6 @@
           </div> -->
         </div>
       </div>
-      @isset($pesanans)
-      @endisset
-      @empty($pesanans)
-      <form action="{{ route('riwayat.proses') }}" method="POST" enctype="multipart/form-data">
-					{{ csrf_field() }}
- 
-					<div class="form-group">
-						<b>File Gambar</b><br/>
-						<input type="file" name="file">
-					</div>
- 
-					<input type="submit" value="Upload" class="btn btn-primary">
-				</form>
-      @endempty
   </section>
   <br><br><br>
   <!--================End Cart Area =================-->

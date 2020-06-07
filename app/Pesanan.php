@@ -8,6 +8,7 @@ class Pesanan extends Model
 {
     protected $fillable = [
         'resi',
+        'status',
         'kurir',
         'jumlah_harga',
         'file',

@@ -204,7 +204,7 @@
                                 <div class="single_product_text">
                                     <h4>{{ $ba->namabarang }}</h4>
                                     <h3>Rp. {{ number_format($ba->harga) }}</h3>
-                                    <a href="{{ url('detail') }}/{{ $ba->namabarang }}" class="add_cart">Lihat Detail</a>
+                                    <a href="{{ url('detail') }}/{{ $ba->namabarang }}" class="add_cart">+ tambah ke keranjang<i class="ti-heart"></i></a>
                                 </div>
                             </div>
                         </div>

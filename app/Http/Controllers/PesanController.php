@@ -91,7 +91,10 @@ class PesanController extends Controller
 
       	        // isi dengan nama folder tempat kemana file diupload
 		$tujuan_upload = 'uploads';
-		$file->move($tujuan_upload,$nama_file);
+        $file->move($tujuan_upload,$nama_file);
+        
+        $pesanan = Pesanan::where('id', $id)->first();
+        $pesanan->status = 2;
 
 		$pesanan = Pesanan::find($id);
 		$pesanan->file = $nama_file;
@@ -103,7 +106,8 @@ class PesanController extends Controller
 		$pesanan->resi = $request->resi;
 		$pesanan->kurir = $request->kurir;
 		$pesanan->status_kirim = $request->status_kirim;
-		$pesanan->save();
+        $pesanan->save();
+        alert()->success('Mohon Tunggu Konfirmasi Selanjutnya.','Anda Telah Mengupload Bukti Pembayaran');
 		return redirect()->back();
 	}
 
@@ -323,5 +327,13 @@ class PesanController extends Controller
     {
         $pesanan = Pesanan::get();
         return view('pages.tes',['pesanan' => $pesanan]);
+    }
+
+    public function selesai($id){
+        $pesanan = Pesanan::where('id', $id)->first();
+        $pesanan->status = 3;
+        $pesanan->update();
+
+        return back();
     }
 }

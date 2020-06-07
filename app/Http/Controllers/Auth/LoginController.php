@@ -45,12 +45,12 @@ class LoginController extends Controller
         $user = Auth::user();
         if(Auth::user()->hasRole('admin')){
             $this->redirectTo = route('dashboard');
-            alert()->success('','Selamat Datang, '.$user->name. ' !');
+            alert()->success ('Selamat Datang, '.$user->name. ' !', 'Berhasil !');
             return $this->redirectTo;
         }
 
         $this->redirectTo = route('home');
-        alert()->success('','Selamat Datang, '.$user->name. ' !');
+        alert()->success('Selamat Datang, '.$user->name. ' !', 'Berhasil !');
         return $this->redirectTo;
     }
 }

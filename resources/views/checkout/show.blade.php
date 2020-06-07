@@ -20,6 +20,18 @@
 			<td>{{ $pesanan_detail->jumlah_harga }}</td>
     </tr>
     <tr>
+    <th>Status Pengiriman</th>
+    <td>
+    @if($pesanan_detail->pesanan->status == 1)
+                  Menunggu Pembayaran
+                  @elseif ($pesanan_detail->pesanan->status == 2)
+                  Pesanan Sedang Diproses
+                  @elseif ($pesanan_detail->pesanan->status == 3)
+                  Pesanan Telah Selesai
+                  @endif
+                  </td>
+    </tr>
+    <tr>
 			<th>Status Pengiriman</th>
       <td>
       @if($pesanan_detail->pesanan->status_kirim == 0)
@@ -79,7 +91,6 @@
                     <tr>
                             <th scope="col">User ID</th>
                             <th scope="col">Tanggal Pemesanan</th>
-                            <th scope="col">Status</th>
                             <th scope="col">Kode</th>
                             <th scope="col">Jumlah Harga</th>
                           </tr>
@@ -88,7 +99,6 @@
                             <tr>
                             <td>{{ $pesanan_detail->pesanan->user_id }}</td>
                             <td>{{ $pesanan_detail->pesanan->tanggal }}</td>
-                            <td>{{ $pesanan_detail->pesanan->status }}</td>
                             <td>{{ $pesanan_detail->pesanan->kode }}</td>
                             <td>{{ $pesanan_detail->pesanan->jumlah_harga }}</td>
                             </tr>
@@ -99,40 +109,47 @@
             </div>
             </div>
 
-<h2>Detail Data Pelanggan</h2>
-	<table class="table table-striped">
-		<tr>
-			<th>Nama Pemesan</th>
-			<td>{{ $pesanan_detail->pesanan->user->name }}</td>
-		</tr>
-		<tr>
-			<th>Email Pemesan</th>
-			<td>{{ $pesanan_detail->pesanan->user->email }}</td>
-		</tr>
-		<tr>
-			<th>No Hp Pemesan</th>
-			<td>{{ $pesanan_detail->pesanan->user->no_hp }}</td>
-		</tr>
-		<tr>
-			<th>Alamat</th>
-      <td>{{ $pesanan_detail->pesanan->user->alamat }}</td>
-    </tr>
-    <tr>
-			<th>Status Verifikasi</th>
-      <td>{{ $pesanan_detail->pesanan->user->status_verified }}</td>
-    </tr>
+  <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Detail Data Pelanggan</h4>
+              </div>
+                <div class="card-body ">
+                    <div class="table-responsive">
+                    <table class="table tablesorter" id="">
+                    <thead class=" text-primary">
+                      <tr>
+                      <th>Nama Pemesan</th>
+                      <th>Email Pemesan</th>
+                      <th>No Hp Pemesan</th>
+                      <th>Alamat</th>
+                      <th>Status Verifikasi</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                      <td>{{ $pesanan_detail->pesanan->user->name }}</td>
+                      <td>{{ $pesanan_detail->pesanan->user->email }}</td>
+                      <td>{{ $pesanan_detail->pesanan->user->no_hp }}</td>
+                      <td>{{ $pesanan_detail->pesanan->user->alamat }}</td>
+                      <td>{{ $pesanan_detail->pesanan->user->status_verified }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                    </div>
+                    </div>
+                    </div>
+
+<table class="table table-striped">
     <tr>
       <th>Bukti Pembayaran</th>
             <td>
                 <img src="{{ url('uploads') }}/{{ $pesanan_detail->pesanan->file }}"/>
-                @empty($pesanan_detail->pesanan->file)
-						Pelanggan Belum Upload Bukti Pembayaran
-                    @endempty
-
+                  @empty($pesanan_detail->pesanan->file)
+                    Pelanggan Belum Upload Bukti Pembayaran
+                  @endempty
             </td>
-            </tr>
-		
-  </table>
+    </tr>
+</table>
   <div>
 		<a href="/pembelian" class="btn btn-primary"><i class="tim-icons icon-minimal-left"></i></a>
 	</div>

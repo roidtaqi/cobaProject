@@ -18,7 +18,6 @@
                 <th scope="col">Tanggal</th>
                 <th scope="col">Status</th>
                 <th scope="col">Kode</th>
-				<th scope="col">Jumlah Harga</th>
 				<th scope="col">Bukti</th>
 				<th scope="col">Detail</th>
               </tr>
@@ -28,9 +27,16 @@
 				  <tr>
                     <td>{{ $p->pesanan->user_id }}</td>
                     <td>{{ $p->pesanan->tanggal }}</td>
-                    <td>{{ $p->pesanan->status }}</td>
+                    <td>
+					@if($p->pesanan->status == 1)
+                  Menunggu Pembayaran
+                  @elseif ($p->pesanan->status == 2)
+                  Pesanan Sedang Diproses
+                  @elseif ($p->pesanan->status == 3)
+                  Pesanan Telah Selesai
+                  @endif
+					</td>
 					<td>{{ $p->pesanan->kode }}</td>
-					<td>{{ $p->pesanan->jumlah_harga }}</td>
 					<td>
 					@isset($p->pesanan->file)
 					{{ $p->pesanan->file }}
@@ -40,7 +46,10 @@
                     @endempty
 					</td>
 
-					<td><a name="detail" id=""class="btn btn-info float-left" href="{{url('pembelian/'.$p->id) }}" role="button"><i class="tim-icons icon-alert-circle-exc"></i></a></td>
+					<td>
+						<a name="edit" style="margin-left: 5px" id=""class="btn btn-secondary btn-sm float-left" href="{{ route('checkout.edit', $p->pesanan->id) }}" role="button"><i class="tim-icons icon-pencil"></i></a>
+						<a name="detail" id=""class="btn btn-info btn-sm float-left" href="{{url('pembelian/'.$p->id) }}" role="button"><i class="tim-icons icon-alert-circle-exc"></i></a>
+					</td>
                   </tr>
 				<?php endforeach ?>
 			</tbody>

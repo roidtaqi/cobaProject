@@ -60,7 +60,7 @@
                 <p>Total Bayar</p><span>: Rp. {{ number_format($pesanan->jumlah_harga+$pesanan->kode) }}</span>
               </li>
               <li>
-                <p>Rekening Transfer</p><span>: BRI 6392019373 a/n Paparara</span>
+                <p>Rekening Transfer</p><span>: BRI 6392019373 a/n Mister</span>
               </li>
               <li>
                 <a href="{{ url('bayar') }}/{{ $pesanan->id }}" class="btn_2 mt-4" style="margin-left: -230px;"><i class="fas fa-tags"></i> Konfirmasi Bayar</a>
@@ -165,11 +165,46 @@
             <input type="file" name="file">
           </div> -->
         <br>
+
+        <!-- BARU -->
         <div class="col-lg-12" align="center">
-          <a href="/semua" class="btn_3 mb-4"><i class="fas fa-shopping-basket"></i>Ingin Berbelanja Lagi ?</a>
+          <a href="/semua" class="btn_3 mb-4 mr-3"><i class="fas fa-shopping-basket"></i>Ingin Berbelanja Lagi ?</a>
+          
+          @if ($pesanan->status != 3)
+          <!-- Button to Open the Modal -->
+                      <button type="button" class="btn_3 ml-3" data-toggle="modal" data-target="#selesai">
+                        <i class="fas fa-clipboard-check"></i> Pesanan Telah Selesai
+                      </button>
+
+                      <!-- The Modal -->
+                      <div class="modal fade" id="selesai">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                              <h4 class="modal-title">Perhatian</h4>
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                              Apakah Pesanan Telah Anda Terima ? <br>
+                            </div>
+                           <form action="{{ url('selesai') }}/{{ $pesanan->id }}" method="get">
+                            @csrf
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                              <button type="submit" class="btn btn-danger">Selesai</button>
+                              <button type="button" class="btn btn-light" data-dismiss="modal">Batal</button>
+                            </div>
+                @else
+                @endif
         </div>
     </div>
   </section>
+  <!-- BARU SAMPE SINI -->
+
   <!--================ confirmation part end =================-->
 @stop
 

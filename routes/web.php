@@ -25,9 +25,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes(['verify' => true]);
 
-Route::get('tes', 'PesanController@upload');
-Route::post('tes/proses', 'PesanController@proses_upload');
-
 Route::get('logout', 'HomeController@logout');
 Route::get('edit', 'HomeController@edit');
 Route::get('blog', 'HomeController@blog');
@@ -79,12 +76,13 @@ Route::get('riwayat', 'PesanController@riwayat');
 Route::group(['middleware' => 'auth'], function () 
 {
 Route::get('riwayat/{id}', 'PesanController@detail');
+Route::get('selesai/{id}', 'PesanController@selesai');
 });
 
 Route::group(['middleware' => 'auth'], function () 
 {
 Route::get('lacak/{id}', 'PesanController@kirim');
-Route::get('bayar/{id}', 'PesanController@bayar');
+Route::get('bayar/{id}', 'PesanController@bayar')->name('bayar');
 Route::post('bayar/proses/{id}', 'PesanController@proses_upload')->name('bayar.upload');
 });
 
@@ -130,6 +128,8 @@ Route::group(['middleware' => 'auth'], function ()
 {
     Route::get('pembelian','CheckoutController@index')->name('checkout.index')->middleware('can:manage-users');
     Route::get('pembelian/{pesanan}', 'CheckoutController@show')->name('checkout.show')->middleware('can:manage-users');
+    Route::get('pembelian/{pesanan}/edit', 'CheckoutController@edit')->name('checkout.edit')->middleware('can:manage-users');
+    Route::patch('pembelian/{pesanan}', 'CheckoutController@update')->name('checkout.update')->middleware('can:manage-users');
 });
 
 
