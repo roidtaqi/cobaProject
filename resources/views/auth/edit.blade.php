@@ -74,6 +74,7 @@
                                 <textarea type="alamat" name="alamat" class="form-control{{ $errors->has('alamat') ? ' is-invalid' : '' }}" placeholder="{{ __('Alamat') }}">{{ old('alamat', auth()->user()->alamat) }}</textarea>
                                 @include('alerts.feedback', ['field' => 'alamat'])
                             </div>
+                            
                             <form action="/upload/proses" method="POST" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 

@@ -78,7 +78,7 @@ class RegisterController extends Controller
 
         $user->roles()->attach($role);
 
-        alert()->success('','Selamat Datang, ' .$user->name. ' !');
+        alert()->success('Selamat Datang, '.$user->name. ' !', 'Berhasil !');
         return $user;
         return redirect('/login');
     }

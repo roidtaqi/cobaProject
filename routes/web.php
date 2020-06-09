@@ -105,10 +105,10 @@ Route::group(['middleware' => 'auth'], function ()
 
 Route::group(['middleware' => 'auth'], function () 
 {
-    Route::get('profile', ['as' => 'profile.index', 'uses' => 'ProfileController@index'])->middleware('can:manage-users');
-	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit'])->middleware('can:manage-users');
-	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update'])->middleware('can:manage-users');
-	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password'])->middleware('can:manage-users');
+    Route::get('profile', ['as' => 'profile.index', 'uses' => 'ProfileController@index']);
+	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
+	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
+	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
 });
 
 Route::group(['middleware' => 'auth'], function ()

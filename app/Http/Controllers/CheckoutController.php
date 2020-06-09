@@ -82,7 +82,7 @@ class CheckoutController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    {   
         $pesanan = Pesanan::findOrFail($id);
         $pesanan -> update($request->all());
         return redirect('pembelian');
