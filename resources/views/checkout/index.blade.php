@@ -57,6 +57,15 @@
 		@else
 			<p>Tidak ada data</p>
 		@endif
+		<div class="table-nav">
+	<div class="jumlah-data">
+		<strong> Jumlah Pembelian : {{ $jumlah_pesanan_detail }}</strong> <br>
+	</div>
+	<br>
+	<div class="paging">
+		{{ $pesanan_detail->links() }}
+	</div>
+	</div>
                 </div>
               </div>
             </div>

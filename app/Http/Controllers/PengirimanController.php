@@ -15,8 +15,9 @@ class PengirimanController extends Controller
     public function index()
     {
         $halaman = 'pesanan';
-        $pesanan = Pesanan::where('status','>=', "1")->get();
-        return view('pengiriman.index', compact('halaman','pesanan'));
+        $pesanan = Pesanan::orderBy('id', 'asc')->where('status','>=', "1")->paginate('5');
+        $jumlah_pesanan = Pesanan::count();
+        return view('pengiriman.index', compact('halaman','pesanan','jumlah_pesanan'));
     }
 
     /**
@@ -64,7 +65,7 @@ class PengirimanController extends Controller
     public function edit($id)
     {
         $halaman = 'pesanan';
-		$pesanan = Pesanan::findOrFail($id);
+        $pesanan = Pesanan::findOrFail($id);
     	return view ('pengiriman.edit', compact('halaman', 'pesanan'));
     }
 

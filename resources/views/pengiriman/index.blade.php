@@ -52,7 +52,16 @@
 		</table>
 		@else
 			<p>Tidak ada data</p>
-		@endif
+    @endif
+    <div class="table-nav">
+	<div class="jumlah-data">
+		<strong> Jumlah Pengiriman : {{ $jumlah_pesanan }}</strong> <br>
+	</div>
+	<br>
+	<div class="paging">
+		{{ $pesanan->links() }}
+	</div>
+	</div>
                 </div>
               </div>
             </div>

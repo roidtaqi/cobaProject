@@ -21,7 +21,19 @@
         </tr>
         <tr>
 			<th>Status Kirim</th>
-			<td>{{ $pesanan->status_kirim}}</td>
+			<td>
+				  @if($pesanan->status_kirim == 0)
+                  Pesanan Dalam Proses Konfirmasi
+                  @elseif($pesanan->status_kirim == 1)
+                  Paket Telah Dipacking
+                  @elseif ($pesanan->status_kirim == 2)
+                  Paket Dikirim Menuju Transit Hub
+                  @elseif ($pesanan->status_kirim == 3)
+                  Paket Menuju Alamat Penerima
+                  @elseif ($pesanan->status_kirim == 4)
+                  Paket Telah Diterima
+                  @endif
+			</td>
         </tr>
 
   </table>

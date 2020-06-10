@@ -168,12 +168,16 @@
 
         <!-- BARU -->
         <div class="col-lg-12" align="center">
-          <a href="/semua" class="btn_3 mb-4 mr-3"><i class="fas fa-shopping-basket"></i>Ingin Berbelanja Lagi ?</a>
-          
+        <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-3">
+          <button href="/semua" class="btn btn-danger mb-4 mr-3"><i class="fas fa-shopping-basket"></i>  Ingin Berbelanja Lagi ?</button>
+          </div>
+          <div class="col-sm-3">
           @if ($pesanan->status != 3)
           <!-- Button to Open the Modal -->
-                      <button type="button" class="btn_3 ml-3" data-toggle="modal" data-target="#selesai">
-                        <i class="fas fa-clipboard-check"></i> Pesanan Telah Selesai
+                      <button type="button" class="btn btn-secondary mb-4 mr-3" data-toggle="modal" data-target="#selesai">
+                        <i class="fas fa-clipboard-check"></i>  Pesanan Telah Selesai
                       </button>
 
                       <!-- The Modal -->
@@ -200,6 +204,9 @@
                             </div>
                 @else
                 @endif
+                </div>
+                <div class="col-sm-3"></div>
+                </div>
         </div>
     </div>
   </section>

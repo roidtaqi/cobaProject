@@ -286,7 +286,7 @@
                                 </div>
                             </div>
                         </div> -->
-                        <div class="col-lg-12">
+                        <!-- <div class="col-lg-12">
                             <div class="pageination">
                                 <nav aria-label="Page navigation example">
                                     <ul class="pagination justify-content-center">
@@ -309,7 +309,7 @@
                                     </ul>
                                 </nav>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

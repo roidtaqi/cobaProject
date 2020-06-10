@@ -24,7 +24,16 @@
   <!-- breadcrumb start-->
 
   <!--================Cart Area =================-->
+  <div class="container" style="padding-top:30px;">
+     <a class="btn_1 mb-3" href="{{ url('riwayat')}}/{{ $pesanan->id }}"><i class="fas fa-arrow-left"> </i> Kembali Ke Rincian</a>
+  </div>
+
   @isset($pesanan->file)
+  <div class="container" align="center" style="padding-top:30px;">
+
+    <b style="font-size: 20pt;">Bukti Pembayaran Telah Diupload!</b>
+  </div>
+    
 @endisset
           @empty($pesanan->file)
           <section class="cart_area padding_top">

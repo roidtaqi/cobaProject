@@ -125,7 +125,7 @@
                     <button type="submit" class="btn btn-fill btn-primary">Update</button>
                     </div>
                     <div class="col-2">
-                        <button href="/pengiriman" class="btn btn-fill btn-danger">Batal</button>
+                        <button href="{{ route('pengiriman.index')  }}" class="btn btn-fill btn-danger">Batal</button>
                     </div>
                 </div>
                 </form>

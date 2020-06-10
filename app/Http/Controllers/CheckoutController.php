@@ -20,8 +20,9 @@ class CheckoutController extends Controller
     public function index()
     {
         $halaman = 'pesanan_detail';
-        $pesanan_detail = PesananDetail::all();
-        return view('checkout.index', compact('halaman','pesanan_detail'));
+        $pesanan_detail = PesananDetail::orderBy('id', 'asc')->paginate('5');
+        $jumlah_pesanan_detail = PesananDetail::count();
+        return view('checkout.index', compact('halaman','pesanan_detail','jumlah_pesanan_detail'));
     }
 
     /**
